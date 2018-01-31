@@ -1,0 +1,6 @@
+/# Prints 'Hello World' #/
+
+"Hello World" PRINT
+
+
+/# i'd really like to include some more technical examples, but this language doesn't have conditionals or loops yet. :( #/
