@@ -9,30 +9,36 @@ def interp(instructions):
     for index, i in enumerate(instructions):
         if type(i) in [int, float]:
             stack.append(i)
-        elif i == "PRINT":
-            PRINT()
-        elif i == "PSTACK":
-            PSTACK()
-        elif i == "PLUS":
-            PLUS()
-        elif i == "MINUS":
-            MINUS()
-        elif i == "POP":
-            POP()
-        elif i == "MULTIPLY":
-            MULTIPLY()
-        elif i == "MOD":
-            MOD()
-        elif i == "NEG":
-            NEG()
-        elif i == "ABS":
-            ABS()
-        elif i == "VAR":
-            instructions[index] = ['VAR', instructions[index+1]]
-            del instructions[index+1:index+2]
-            VAR(*instructions[index])
+        elif i in dep.reserved:
+            if i == "PRINT":
+                PRINT()
+            elif i == "PSTACK":
+                PSTACK()
+            elif i == "PLUS":
+                PLUS()
+            elif i == "MINUS":
+                MINUS()
+            elif i == "POP":
+                POP()
+            elif i == "MULTIPLY":
+                MULTIPLY()
+            elif i == "MOD":
+                MOD()
+            elif i == "NEG":
+                NEG()
+            elif i == "ABS":
+                ABS()
+            elif i == "DIVIDE":
+                DIVIDE()
+            elif i == "VAR":
+                instructions[index] = ['VAR', instructions[index+1]]
+                del instructions[index+1:index+2]
+                VAR(*instructions[index])
         elif type(i) == str:
-            stack.append(i)
+            if i in gVars:
+                stack.append(gVars[i])
+            else:
+                stack.append(i)
         
 
 def main():
@@ -47,7 +53,7 @@ def main():
         errors.noFile()
     instructions = file.read().replace('\n', ' ')
     instructions = re.sub(' +', ' ', instructions)
-    instructions = re.sub('/#.*#/', '', instructions)
+    instructions = re.sub('/#[ a-zA-Z0-9]*#/', '', instructions)
     instructions = _split(instructions)
     for index, item in enumerate(instructions):
         for i in rep:
@@ -146,6 +152,8 @@ def ABS():
         errors.stackArgumentLenError("ABS")
     else:
         stack[-1] = abs(stack[-1])
+
+        
 
 def VAR(call, name):
     global stack

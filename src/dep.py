@@ -16,6 +16,7 @@ reserved = [
     'NEG',
     'ABS',
     'VAR',
+    'DIVIDE',
     True,
     False,
     
