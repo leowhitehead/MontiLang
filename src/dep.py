@@ -22,6 +22,25 @@ reserved = [
     
 ]
 
+def getArgs(s):
+    args = []
+    cur = ''
+    inQuotes = 0
+    for char in s.strip():
+        if char == ' ' and not inQuotes:
+            args.append(cur)
+            cur = ''
+        elif char == '|' and not inQuotes:
+            inQuotes = 1
+            cur += char
+        elif char == '|' and inQuotes:
+            inQuotes = 0
+            cur += char
+        else:
+            cur += char
+    args.append(cur)
+    return args
+
 def tryconvert(s):
     try:
         return int(s)

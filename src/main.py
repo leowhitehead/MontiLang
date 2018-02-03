@@ -1,44 +1,47 @@
 import sys
 import re
-from shlex import split as _split
 import errors
 import dep
 
 
 def interp(instructions):
+    print instructions
     for index, i in enumerate(instructions):
-        if type(i) in [int, float]:
-            stack.append(i)
-        elif i in dep.reserved:
-            if i == "PRINT":
-                PRINT()
-            elif i == "PSTACK":
-                PSTACK()
-            elif i == "PLUS":
-                PLUS()
-            elif i == "MINUS":
-                MINUS()
-            elif i == "POP":
-                POP()
-            elif i == "MULTIPLY":
-                MULTIPLY()
-            elif i == "MOD":
-                MOD()
-            elif i == "NEG":
-                NEG()
-            elif i == "ABS":
-                ABS()
-            elif i == "DIVIDE":
-                DIVIDE()
-            elif i == "VAR":
-                instructions[index] = ['VAR', instructions[index+1]]
-                del instructions[index+1:index+2]
-                VAR(*instructions[index])
-        elif type(i) == str:
-            if i in gVars:
+        if type(i) == str:
+            if i in dep.reserved:
+                if i == "PRINT":
+                    PRINT()
+                elif i == "PSTACK":
+                    PSTACK()
+                elif i == "PLUS":
+                    PLUS()
+                elif i == "MINUS":
+                    MINUS()
+                elif i == "POP":
+                    POP()
+                elif i == "MULTIPLY":
+                    MULTIPLY()
+                elif i == "MOD":
+                    MOD()
+                elif i == "NEG":
+                    NEG()
+                elif i == "ABS":
+                    ABS()
+                elif i == "DIVIDE":
+                    DIVIDE()
+                elif i == "VAR":
+                    instructions[index] = ['VAR', instructions[index+1]]
+                    del instructions[index+1:index+2]
+                    VAR(*instructions[index])
+            elif i[-1] == '|' and i[0] == '|':
+                stack.append(i[1:-1])
+            elif i in gVars:
                 stack.append(gVars[i])
             else:
-                stack.append(i)
+                errors.invalidCommand(i)
+        elif type(i) in [int, float]:
+            stack.append(i)
+
         
 
 def main():
@@ -54,7 +57,7 @@ def main():
     instructions = file.read().replace('\n', ' ')
     instructions = re.sub(' +', ' ', instructions)
     instructions = re.sub('/#[ a-zA-Z0-9]*#/', '', instructions)
-    instructions = _split(instructions)
+    instructions = dep.getArgs(instructions)
     for index, item in enumerate(instructions):
         for i in rep:
             if item == i[0]:
