@@ -5,7 +5,6 @@ import dep
 
 
 def interp(instructions):
-    print instructions
     for index, i in enumerate(instructions):
         if type(i) == str:
             if i in dep.reserved:
