@@ -3,7 +3,7 @@ def noFile():
     print "no file specified"
     sys.exit()
 
-def invalidCommand(a=None):
+def invalidCommand(a = None):
     if a:
         print "Invalid command '{}'".format(a)
     else:
