@@ -48,4 +48,7 @@ def tryconvert(s):
         try:
             return float(s)
         except ValueError:
-            return s.upper()
+            if '|' in s:
+                return s
+            else:
+                return s.upper()
