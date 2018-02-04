@@ -3,9 +3,9 @@ import re
 import errors
 import dep
 
-
-def interp(instructions):
+def lex(instructions):
     for index, i in enumerate(instructions):
+        print instructions, i
         if type(i) == str:
             if i in dep.reserved:
                 if i == "PRINT":
@@ -26,6 +26,8 @@ def interp(instructions):
                     NEG()
                 elif i == "ABS":
                     ABS()
+                elif i == "CLEAR":
+                    CLEAR()
                 elif i == "DIVIDE":
                     DIVIDE()
                 elif i == "VAR":
@@ -63,14 +65,14 @@ def main():
                 instructions[index] = i[1]
 
     instructions = [dep.tryconvert(i) for i in instructions if i != '']
-    interp(instructions)
+    lex(instructions)
 
 
 
 def PRINT():
     """Print item on top of stack"""
     if len(stack) < 1:
-        errors.stackArgumentLenError('PRINT')
+        print "None"
     else:
         print stack[-1]
 
@@ -155,7 +157,10 @@ def ABS():
     else:
         stack[-1] = abs(stack[-1])
 
-        
+def CLEAR():
+    """Wipe stack"""
+    global stack
+    stack = []
 
 def VAR(call, name):
     global stack

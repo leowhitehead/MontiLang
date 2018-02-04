@@ -25,7 +25,7 @@ def valueError():
     print "valueError"
     sys.exit()
 
-def opError():
+def opError(a = None):
     print "Invalid types for operation"
     sys.exit()
 

@@ -3,7 +3,8 @@ rep = [['+', 'PLUS'],
     ['/', 'DIVIDE'], 
     ['*', 'MULTIPLY'], 
     ['.', 'POP'],
-    ['%', 'MOD']]
+    ['%', 'MOD'],
+    ["CLS", "CLEAR"]]
 
 reserved = [
     'PRINT',
@@ -17,8 +18,9 @@ reserved = [
     'ABS',
     'VAR',
     'DIVIDE',
+    'CLEAR',
     True,
-    False,
+    False
     
 ]
 
