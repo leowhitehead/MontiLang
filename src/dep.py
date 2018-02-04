@@ -19,8 +19,12 @@ reserved = [
     'VAR',
     'DIVIDE',
     'CLEAR',
-    True,
-    False
+    'WHILE',
+    'ENDWHILE',
+    'IF',
+    'ENDIF',
+    'FOR',
+    'ENDFOR'
     
 ]
 
