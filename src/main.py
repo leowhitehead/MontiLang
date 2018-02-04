@@ -10,11 +10,7 @@ def lex(instructions):
             del instructions[index+1:index+2]
     for i in instructions:
         interp(i)
-
-
-    
-         
-
+        
 def interp(command):
     if type(command) == str:
         if command in dep.reserved:
