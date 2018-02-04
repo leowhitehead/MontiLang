@@ -5,51 +5,60 @@ import dep
 
 def lex(instructions):
     for index, i in enumerate(instructions):
-        if type(i) == str:
-            if i in dep.reserved:
-                if i == "PRINT":
-                    PRINT()
-                elif i == "PSTACK":
-                    PSTACK()
-                elif i == "PLUS":
-                    PLUS()
-                elif i == "MINUS":
-                    MINUS()
-                elif i == "POP":
-                    POP()
-                elif i == "MULTIPLY":
-                    MULTIPLY()
-                elif i == "MOD":
-                    MOD()
-                elif i == "NEG":
-                    NEG()
-                elif i == "ABS":
-                    ABS()
-                elif i == "CLEAR":
-                    CLEAR()
-                elif i == "DIVIDE":
-                    DIVIDE()
-                elif i == "VAR":
-                    instructions[index] = ['VAR', instructions[index+1]]
-                    del instructions[index+1:index+2]
-                    VAR(*instructions[index])
-            elif i[-1] == '|' and i[0] == '|':
-                stack.append(i[1:-1])
-            elif i in gVars:
-                stack.append(gVars[i])
-            else:
-                errors.invalidCommand(i)
-        elif type(i) in [int, float]:
-            stack.append(i)
+        if i == "VAR":
+            instructions[index] = ['VAR', instructions[index+1]]
+            del instructions[index+1:index+2]
+    for i in instructions:
+        interp(i)
 
-        
+
+    
+         
+
+def interp(command):
+    if type(command) == str:
+        if command in dep.reserved:
+            if command == "PRINT":
+                PRINT()
+            elif command == "PSTACK":
+                PSTACK()
+            elif command == "PLUS":
+                PLUS()
+            elif command == "MINUS":
+                MINUS()
+            elif command == "POP":
+                POP()
+            elif command == "MULTIPLY":
+                MULTIPLY()
+            elif command == "MOD":
+                MOD()
+            elif command == "NEG":
+                NEG()
+            elif command == "ABS":
+                ABS()
+            elif command == "CLEAR":
+                CLEAR()
+            elif command == "DIVIDE":
+                DIVIDE()
+        elif command in gVars:
+            stack.append(gVars[command])
+        elif command[-1] == '|' and command[0] == '|':
+            stack.append(command[1:-1])
+        else:
+            errors.invalidCommand(command)
+    elif type(command) == list:
+        if command[0] == 'VAR':
+            VAR(*command)
+    elif type(command) in [int, float]:
+        stack.append(command)
+
 
 def main():
     global stack
     global gVars
     stack = []
     gVars = {}
-    rep = dep.rep
+    rep = dep.replace
     try:
         file = open(sys.argv[1], 'r')
     except IndexError:

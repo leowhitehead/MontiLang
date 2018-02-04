@@ -1,4 +1,4 @@
-rep = [['+', 'PLUS'], 
+replace = [['+', 'PLUS'], 
     ['-', 'MINUS'],
     ['/', 'DIVIDE'], 
     ['*', 'MULTIPLY'], 
