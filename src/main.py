@@ -5,7 +5,6 @@ import dep
 
 def lex(instructions):
     for index, i in enumerate(instructions):
-        print instructions, i
         if type(i) == str:
             if i in dep.reserved:
                 if i == "PRINT":
