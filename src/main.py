@@ -12,7 +12,6 @@ def lex(instructions):
         instructions = getLoop(instructions)
     except ValueError:
         errors.noClosingStatement()
-    print instructions
     for i in instructions:
         interp(i)
 
