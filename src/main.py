@@ -8,9 +8,14 @@ def lex(instructions):
         if i == "VAR":
             instructions[index] = ['VAR', instructions[index+1]]
             del instructions[index+1:index+2]
+    try:
+        instructions = getLoop(instructions)
+    except ValueError:
+        errors.noClosingStatement()
+    print instructions
     for i in instructions:
         interp(i)
-        
+
 def interp(command):
     if type(command) == str:
         if command in dep.reserved:
@@ -40,11 +45,26 @@ def interp(command):
             stack.append(gVars[command])
         elif command[-1] == '|' and command[0] == '|':
             stack.append(command[1:-1])
+        elif command[0:-2] in gVars and command[-2:] == '++':
+            if type(gVars[command[0:-2]]) in [int, float]:
+                gVars[command[0:-2]] += 1
+            else:
+                errors.opError()
+        elif command[0:-2] in gVars and command[-2:] == '--':
+            if type(gVars[command[0:-2]]) in [int, float]:
+                gVars[command[0:-2]] -= 1
+            else:
+                errors.opError()
         else:
             errors.invalidCommand(command)
     elif type(command) == list:
         if command[0] == 'VAR':
             VAR(*command)
+        elif command[0] == 'FOR':
+            FOR(command[1:-1])
+        else:
+            for i in command:
+                interp(i) #recursion op
     elif type(command) in [int, float]:
         stack.append(command)
 
@@ -168,11 +188,21 @@ def CLEAR():
 
 def VAR(call, name):
     global stack
-    if name in dep.reserved:
+    if name in dep.reserved or name in dep.reserved2:
         errors.syntaxError()
     gVars[name] = stack[-1]
     
+def getLoop(item):
+    return dep.findLoop(dep.findLoop(dep.findLoop(item, 'FOR', 'ENDFOR'), 'WHILE', 'ENDWHILE'), 'IF', 'ENDIF')
 
+def FOR(inst):
+    print inst
+    if type(gVars[inst[0]]) != int:
+        errors.valueError()
+    else:
+        pass
+        for i in range(gVars[inst[0]]):
+            interp(inst[1:])
 
 if __name__ == "__main__":
     main()

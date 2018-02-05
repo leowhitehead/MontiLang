@@ -29,3 +29,7 @@ def opError(a = None):
     print "Invalid types for operation"
     sys.exit()
 
+def noClosingStatement(a = None):
+    print "No closing statement for conditional/loop"
+    sys.exit()
+
