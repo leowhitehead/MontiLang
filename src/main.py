@@ -12,6 +12,7 @@ def lex(instructions):
         instructions = getLoop(instructions)
     except ValueError:
         errors.noClosingStatement()
+    print instructions
     for i in instructions:
         interp(i)
 
@@ -44,16 +45,6 @@ def interp(command):
             stack.append(gVars[command])
         elif command[-1] == '|' and command[0] == '|':
             stack.append(command[1:-1])
-        elif command[0:-2] in gVars and command[-2:] == '++':
-            if type(gVars[command[0:-2]]) in [int, float]:
-                gVars[command[0:-2]] += 1
-            else:
-                errors.opError()
-        elif command[0:-2] in gVars and command[-2:] == '--':
-            if type(gVars[command[0:-2]]) in [int, float]:
-                gVars[command[0:-2]] -= 1
-            else:
-                errors.opError()
         else:
             errors.invalidCommand(command)
     elif type(command) == list:
@@ -195,11 +186,14 @@ def getLoop(item):
     return dep.findLoop(dep.findLoop(dep.findLoop(item, 'FOR', 'ENDFOR'), 'WHILE', 'ENDWHILE'), 'IF', 'ENDIF')
 
 def FOR(inst):
-    print inst
+    try:
+        if inst[1] == 'PASS':
+            return
+    except IndexError:
+        errors.valueError()
     if type(gVars[inst[0]]) != int:
         errors.valueError()
     else:
-        pass
         for i in range(gVars[inst[0]]):
             interp(inst[1:])
 

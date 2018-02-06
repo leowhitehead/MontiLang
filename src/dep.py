@@ -20,7 +20,8 @@ reserved = [
     'ABS',
     'VAR',
     'DIVIDE',
-    'CLEAR'   
+    'CLEAR',
+    'SKIP'
 ]
 
 reserved2 = [
