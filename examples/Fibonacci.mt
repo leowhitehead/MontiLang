@@ -8,7 +8,7 @@ fibonacci sequence with a for loop #/
 
 FOR loop
     a b + VAR c .
-    c PRINT .
+    a PRINT .
     b VAR a .
     c VAR b .
 ENDFOR
