@@ -53,11 +53,17 @@ def getArgs(s):
     args.append(cur)
     return args
 
-def findLoop(t): 
+def findLoop(t):   
   inds = [index for index, item in enumerate(t) if item in ["IF", "ENDIF", "FOR", "ENDFOR", "WHILE", "ENDWHILE"]]
   centre = inds[(len(inds)/2)-1:(len(inds)/2)+1]
   newCentre = t[centre[0]:centre[1]+1]
   return t[:centre[0]] + [newCentre] + t[centre[1]+1:]
+
+def getLoops(t):
+  inds = len([index for index, item in enumerate(t) if item in ["FOR", "IF", "WHILE"]])
+  for i in range(inds):
+    t = findLoop(t)
+  return t
 
 def tryconvert(s):
     try:

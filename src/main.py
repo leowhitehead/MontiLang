@@ -8,7 +8,7 @@ def lex(instructions):
         if i == "VAR":
             instructions[index] = ['VAR', instructions[index+1]]
             del instructions[index+1:index+2]
-    instructions = dep.findLoop(instructions)
+    instructions = dep.getLoops(instructions)
     for i in instructions:
         interp(i)
 
