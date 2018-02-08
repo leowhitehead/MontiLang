@@ -8,10 +8,7 @@ def lex(instructions):
         if i == "VAR":
             instructions[index] = ['VAR', instructions[index+1]]
             del instructions[index+1:index+2]
-    try:
-        instructions = getLoop(instructions)
-    except ValueError:
-        errors.noClosingStatement()
+    instructions = dep.findLoop(instructions)
     for i in instructions:
         interp(i)
 
@@ -40,6 +37,8 @@ def interp(command):
                 CLEAR()
             elif command == "DIVIDE":
                 DIVIDE()
+            elif command == "INPUT":
+                INPUT()
         elif command in gVars:
             stack.append(gVars[command])
         elif command[-1] == '|' and command[0] == '|':
@@ -180,9 +179,11 @@ def VAR(call, name):
     if name in dep.reserved or name in dep.reserved2:
         errors.syntaxError()
     gVars[name] = stack[-1]
-    
-def getLoop(item):
-    return dep.findLoop(dep.findLoop(dep.findLoop(item, 'FOR', 'ENDFOR'), 'WHILE', 'ENDWHILE'), 'IF', 'ENDIF')
+
+def INPUT():
+    global stack
+    ln = dep.tryconvert(raw_input())
+    stack.append(ln)
 
 def FOR(inst):
     try:
