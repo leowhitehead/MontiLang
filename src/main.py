@@ -39,10 +39,10 @@ def interp(command):
                 DIVIDE()
             elif command == "INPUT":
                 INPUT()
-            elif command == "ENDL":
-                ENDL()
             elif command == "ROT":
                 ROT()
+            elif command == "OUT":
+                OUT()
         elif command in gVars:
             stack.append(gVars[command])
         elif command[-1] == '|' and command[0] == '|':
@@ -73,7 +73,7 @@ def main():
         errors.noFile()
     instructions = file.read().replace('\n', ' ')
     instructions = re.sub(' +', ' ', instructions)
-    instructions = re.sub('/#[ a-zA-Z0-9]*#/', '', instructions)
+    instructions = re.sub('/#[ a-zA-Z0-9!@$%^&*()\'\",|.-_=+]*#/', '', instructions)
     instructions = dep.getArgs(instructions)
     for index, item in enumerate(instructions):
         for i in rep:
@@ -202,7 +202,10 @@ def FOR(inst):
             return
     except IndexError:
         errors.valueError()
-    if type(gVars[inst[0]]) != int:
+    if type(inst[0]) == int:
+        for i in range(inst[0]):
+            interp(inst[1:])
+    elif type(gVars[inst[0]]) != int:
         errors.valueError()
     else:
         for i in range(gVars[inst[0]]):
@@ -212,8 +215,12 @@ def ROT():
     global stack
     stack = stack[:-2] + stack[-2:][::-1]
 
-def ENDL():
-    print " "
-
+def OUT():
+    if len(stack) < 1:
+        sys.stdout.write("None")
+        sys.stdout.flush()
+    else:
+        sys.stdout.write(stack[-1])
+        sys.stdout.flush()
 if __name__ == "__main__":
     main()

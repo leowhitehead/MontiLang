@@ -24,8 +24,8 @@ reserved = [
     'CLEAR',
     'SKIP',
     'INPUT',
-    'ENDL',
-    'ROT'
+    'ROT',
+    'OUT'
 ]
 
 reserved2 = [

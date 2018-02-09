@@ -1,12 +1,10 @@
 /# programming example displaying the first 20 numbers of the 
 fibonacci sequence with a for loop #/
 
-20 VAR loop .
-
 0 VAR a .
 1 VAR b .
 
-FOR loop
+FOR 20
     a b + VAR c .
     a PRINT .
     b VAR a .
