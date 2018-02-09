@@ -39,6 +39,10 @@ def interp(command):
                 DIVIDE()
             elif command == "INPUT":
                 INPUT()
+            elif command == "ENDL":
+                ENDL()
+            elif command == "ROT":
+                ROT()
         elif command in gVars:
             stack.append(gVars[command])
         elif command[-1] == '|' and command[0] == '|':
@@ -61,7 +65,7 @@ def main():
     global stack
     global gVars
     stack = []
-    gVars = {}
+    gVars = {'TRUE':1, 'FALSE':0}
     rep = dep.replace
     try:
         file = open(sys.argv[1], 'r')
@@ -182,7 +186,14 @@ def VAR(call, name):
 
 def INPUT():
     global stack
-    ln = dep.tryconvert(raw_input())
+    if len(stack) > 0:
+        if type(stack[-1]) == str:
+            prompt = stack[-1]
+        else:
+            prompt = ''
+    else:
+        prompt = ''
+    ln = dep.tryconvert(raw_input(prompt), True)
     stack.append(ln)
 
 def FOR(inst):
@@ -196,6 +207,13 @@ def FOR(inst):
     else:
         for i in range(gVars[inst[0]]):
             interp(inst[1:])
+
+def ROT():
+    global stack
+    stack = stack[:-2] + stack[-2:][::-1]
+
+def ENDL():
+    print " "
 
 if __name__ == "__main__":
     main()

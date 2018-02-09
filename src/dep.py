@@ -6,7 +6,8 @@ replace = [['+', 'PLUS'],
     ['*', 'MULTIPLY'], 
     ['.', 'POP'],
     ['%', 'MOD'],
-    ["CLS", "CLEAR"]]
+    ["CLS", "CLEAR"],
+    [r"\n", "ENDL"]]
 
 reserved = [
     'PRINT',
@@ -22,7 +23,9 @@ reserved = [
     'DIVIDE',
     'CLEAR',
     'SKIP',
-    'INPUT'
+    'INPUT',
+    'ENDL',
+    'ROT'
 ]
 
 reserved2 = [
@@ -65,7 +68,7 @@ def getLoops(t):
     t = findLoop(t)
   return t
 
-def tryconvert(s):
+def tryconvert(s, lower=False):
     try:
         return int(s)
     except ValueError:
@@ -75,5 +78,8 @@ def tryconvert(s):
             if '|' in s:
                 return s
             else:
-                return s.upper()
+                if not lower:
+                    return s.upper()
+                else:
+                    return s
 
