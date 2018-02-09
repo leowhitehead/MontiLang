@@ -3,6 +3,3 @@
 |What is your name? | INPUT ROT .
 |Hello, | OUT
 ROT OUT
-
-
-/# test comment #/
