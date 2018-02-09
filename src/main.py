@@ -54,6 +54,8 @@ def interp(command):
             VAR(*command)
         elif command[0] == 'FOR':
             FOR(command[1:-1])
+        elif command[0] == 'WHILE':
+            WHILE(command[1:-1])
         else:
             for i in command:
                 interp(i) #recursion op
@@ -180,7 +182,7 @@ def CLEAR():
 
 def VAR(call, name):
     global stack
-    if name in dep.reserved or name in dep.reserved2:
+    if name in dep.reserved:
         errors.syntaxError()
     gVars[name] = stack[-1]
 
@@ -197,6 +199,7 @@ def INPUT():
     stack.append(ln)
 
 def FOR(inst):
+    print inst
     try:
         if inst[1] == 'PASS':
             return
@@ -211,6 +214,32 @@ def FOR(inst):
         for i in range(gVars[inst[0]]):
             interp(inst[1:])
 
+def WHILE(inst):
+    try:
+        if inst[1] == 'PASS':
+            return
+    except IndexError:
+        errors.valueError()
+    if type(inst[0]) == int:
+        if inst[0] > 0:
+            while True:
+                interp(inst[1:])
+        else:
+            return
+    elif type(inst[0]) == str and inst[0] not in gVars:
+        if len(inst[0]) > 0:
+            while True:
+                interp(inst[1:])
+        else:
+            return
+    elif type(gVars[inst[0]]) == str:
+        while len(gVars[inst0]) > 0:
+            interp(inst[1:])
+    elif type(gVars[inst[0]]) == int:
+        while gVars[inst[0]] > 0:
+            interp(inst[1:])
+
+    
 def ROT():
     global stack
     stack = stack[:-2] + stack[-2:][::-1]

@@ -1,5 +1,6 @@
 /# asks for a user's name and responds with it back #/
 
 |What is your name? | INPUT ROT .
-|Hello, | OUT
+|Hello, | OUT 
 ROT OUT
+

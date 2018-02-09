@@ -25,10 +25,8 @@ reserved = [
     'SKIP',
     'INPUT',
     'ROT',
-    'OUT'
-]
-
-reserved2 = [
+    'OUT',
+    'WHILE',
     'IF',
     'ENDIF',
     'WHILE',
