@@ -1,6 +1,6 @@
 /# counts to 0 from given number with a while statement #/
 
-|Enter a number to count from: | INPUT ROT . 
+|Enter a number to count from: | INPUT SWAP . 
 VAR num .
 
 WHILE num
