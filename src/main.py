@@ -1,5 +1,6 @@
 import sys
 import re
+import os
 import errors
 import dep
 
@@ -51,6 +52,8 @@ def interp(command):
                 DUP()
             elif command == 'NIP':
                 NIP()
+            elif command == 'EXIT':
+                os._exit(1)
         elif command in gVars:
             stack.append(gVars[command])
         elif command[-1] == '|' and command[0] == '|':
@@ -72,7 +75,6 @@ def interp(command):
     elif type(command) in [int, float]:
         stack.append(command)
 
-
 def main():
     global stack
     global gVars
@@ -88,11 +90,20 @@ def main():
     instructions = dep.parse(instructions)
     lex(instructions)
 
-def repl():
-    print "Monti {} on {}".format(dep.globalVs['_VERSION'], dep.globalVs['_PLATFORM'])
-    print "Type 'Help' or 'License' for more information"
-    sys.exit()
-
+def repl(first = True):
+    if first:
+        print "Monti {} on {}".format(dep.globalVs['_VERSION'], dep.globalVs['_PLATFORM'])
+        print "Type 'Help' or 'License' for more information, or type 'QUIT' to quit"
+    while True:
+        try:
+            line = raw_input('>>> ')
+        except (KeyboardInterrupt, EOFError):
+            sys.exit()
+        line = dep.parse(line)
+        try:
+            lex(line)
+        except:
+            repl(False)
 
 def PRINT():
     """Print item on top of stack"""
@@ -183,6 +194,7 @@ def ABS():
         stack[-1] = abs(stack[-1])
 
 def MAX():
+    """replaces top item of stack with largest of top 2"""
     global stack
     if len(stack) < 2:
         errors.stackArgumentLenError("MAX")
@@ -190,6 +202,7 @@ def MAX():
         stack = stack[:-2] + [max(stack[-2:])]
 
 def MIN():
+    """replaces top item of stack with smallest of the top 2"""
     global stack
     if len(stack) < 2:
         errors.stackArgumentLenError("MIN")
@@ -197,6 +210,7 @@ def MIN():
         stack = stack[:-2] + [min(stack[-2:])]
 
 def DUP():
+    """duplicates top item on stack"""
     global stack
     if len(stack) < 1:
         errors.stackArgumentLenError("DUP")
@@ -204,6 +218,7 @@ def DUP():
         stack.append(stack[-1])
 
 def NIP():
+    """deletes 2nd top item from stack"""
     global stack
     if len(stack) < 2:
         errors.stackArgumentLenError("NIP")
@@ -216,12 +231,14 @@ def CLEAR():
     stack = []
 
 def VAR(call, name):
+    """declares a new variable"""
     global stack
     if name in dep.reserved:
         errors.reserved()
     gVars[name] = stack[-1]
 
 def INPUT():
+    """puts user input on top of stack"""
     global stack
     if len(stack) > 0:
         if type(stack[-1]) == str:
@@ -234,7 +251,6 @@ def INPUT():
     stack.append(ln)
 
 def FOR(inst):
-    print inst
     try:
         if inst[1] == 'PASS':
             return
@@ -305,7 +321,6 @@ def IF(inst):
         else:
             errors.valueError()
     
-
 def SWAP():
     global stack
     stack = stack[:-2] + stack[-2:][::-1]

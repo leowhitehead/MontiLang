@@ -7,7 +7,8 @@ replace = [['+', 'PLUS'],
     ['*', 'MULT'], 
     ['.', 'POP'],
     ['%', 'MOD'],
-    ["CLS", "CLEAR"]]
+    ["CLS", "CLEAR"],
+    ["cls", "CLEAR"]]
 
 reserved = [
     'PRINT',
@@ -37,7 +38,8 @@ reserved = [
     'WHILE',
     'ENDWHILE',
     'FOR',
-    'ENDFOR'
+    'ENDFOR',
+    'EXIT'
 ]
 
 globalVs = {
