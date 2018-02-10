@@ -1,7 +1,4 @@
 import sys
-def noFile():
-    print "no file specified"
-    sys.exit()
 
 def invalidCommand(a = None):
     if a:

@@ -25,8 +25,8 @@ def interp(command):
                 MINUS()
             elif command == "POP":
                 POP()
-            elif command == "MULTIPLY":
-                MULTIPLY()
+            elif command == "MULT":
+                MULT()
             elif command == "MOD":
                 MOD()
             elif command == "NEG":
@@ -35,14 +35,22 @@ def interp(command):
                 ABS()
             elif command == "CLEAR":
                 CLEAR()
-            elif command == "DIVIDE":
-                DIVIDE()
+            elif command == "DIV":
+                DIV()
             elif command == "INPUT":
                 INPUT()
             elif command == "SWAP":
                 SWAP()
             elif command == "OUT":
                 OUT()
+            elif command == "MAX":
+                MAX()
+            elif command == "MIN":
+                MIN()
+            elif command == "DUP":
+                DUP()
+            elif command == 'NIP':
+                NIP()
         elif command in gVars:
             stack.append(gVars[command])
         elif command[-1] == '|' and command[0] == '|':
@@ -69,24 +77,21 @@ def main():
     global stack
     global gVars
     stack = []
-    gVars = {'TRUE':1, 'FALSE':0}
-    rep = dep.replace
-    try:
-        file = open(sys.argv[1], 'r')
-    except IndexError:
-        errors.noFile()
+    gVars = dep.globalVs
+    if len(sys.argv) == 1:
+        repl()
+    elif sys.argv[1].upper() == '-V':
+        print "Monti v{}".format(dep.globalVs["_VERSION"])
+        sys.exit()
+    file = open(sys.argv[1], 'r')
     instructions = file.read().replace('\n', ' ')
-    instructions = re.sub(' +', ' ', instructions)
-    instructions = re.sub('/#[ a-zA-Z0-9!@$%^&*()\'\",|.-_=+]*#/', '', instructions)
-    instructions = dep.getArgs(instructions)
-    for index, item in enumerate(instructions):
-        for i in rep:
-            if item == i[0]:
-                instructions[index] = i[1]
-
-    instructions = [dep.tryconvert(i) for i in instructions if i != '']
+    instructions = dep.parse(instructions)
     lex(instructions)
 
+def repl():
+    print "Monti {} on {}".format(dep.globalVs['_VERSION'], dep.globalVs['_PLATFORM'])
+    print "Type 'Help' or 'License' for more information"
+    sys.exit()
 
 
 def PRINT():
@@ -123,7 +128,7 @@ def MINUS():
         stack = stack[:-2]
         stack.append(temp)
 
-def MULTIPLY():
+def MULT():
     """Multiply top 2 items of stack"""
     global stack
     if len(stack) < 2:
@@ -133,7 +138,7 @@ def MULTIPLY():
         stack = stack[:-2]
         stack.append(temp)
 
-def DIVIDE():
+def DIV():
     """Divide top 2 items of stack"""
     global stack
     if len(stack) < 2:
@@ -176,6 +181,34 @@ def ABS():
         errors.stackArgumentLenError("ABS")
     else:
         stack[-1] = abs(stack[-1])
+
+def MAX():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError("MAX")
+    else:
+        stack = stack[:-2] + [max(stack[-2:])]
+
+def MIN():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError("MIN")
+    else:
+        stack = stack[:-2] + [min(stack[-2:])]
+
+def DUP():
+    global stack
+    if len(stack) < 1:
+        errors.stackArgumentLenError("DUP")
+    else:
+        stack.append(stack[-1])
+
+def NIP():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError("NIP")
+    else:
+        del stack[-2]
 
 def CLEAR():
     """Wipe stack"""
@@ -241,6 +274,8 @@ def WHILE(inst):
         elif type(gVars[inst[0]]) in [int, float]:
             while gVars[inst[0]] > 0:
                 interp(inst[1:])
+    else:
+        errors.syntaxError()
 
 def IF(inst):
     try:

@@ -1,13 +1,13 @@
-import itertools
+import sys
+import re
 
 replace = [['+', 'PLUS'], 
     ['-', 'MINUS'],
-    ['/', 'DIVIDE'], 
-    ['*', 'MULTIPLY'], 
+    ['/', 'DIV'], 
+    ['*', 'MULT'], 
     ['.', 'POP'],
     ['%', 'MOD'],
-    ["CLS", "CLEAR"],
-    [r"\n", "ENDL"]]
+    ["CLS", "CLEAR"]]
 
 reserved = [
     'PRINT',
@@ -15,12 +15,16 @@ reserved = [
     'PLUS',
     'MINUS',
     'POP',
-    'MULTIPLY',
+    'MULT',
     'MOD',
     'NEG',
+    'MAX',
+    'MIN',
+    'DUP',
+    'NIP',
     'ABS',
     'VAR',
-    'DIVIDE',
+    'DIV',
     'CLEAR',
     'SKIP',
     'INPUT',
@@ -36,6 +40,12 @@ reserved = [
     'ENDFOR'
 ]
 
+globalVs = {
+    'TRUE':1,
+    'FALSE':0,
+    '_VERSION':"1.0",
+    '_PLATFORM':sys.platform
+}
 def getArgs(s):
     args = []
     cur = ''
@@ -60,6 +70,17 @@ def findLoop(t):
   centre = inds[(len(inds)/2)-1:(len(inds)/2)+1]
   newCentre = t[centre[0]:centre[1]+1]
   return t[:centre[0]] + [newCentre] + t[centre[1]+1:]
+
+def parse(instructions):
+    instructions = re.sub(' +', ' ', instructions)
+    instructions = re.sub('/#[ a-zA-Z0-9!@$%^&*()\'\",|.-_=+]*#/', '', instructions)
+    instructions = getArgs(instructions)
+    for index, item in enumerate(instructions):
+        for i in replace:
+            if item == i[0]:
+                instructions[index] = i[1]
+    instructions = [tryconvert(i) for i in instructions if i != '']
+    return instructions
 
 def getLoops(t):
   inds = len([index for index, item in enumerate(t) if item in ["FOR", "IF", "WHILE"]])
