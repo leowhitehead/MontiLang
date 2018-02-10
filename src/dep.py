@@ -25,6 +25,7 @@ reserved = [
     'SKIP',
     'INPUT',
     'ROT',
+    'SWAP',
     'OUT',
     'WHILE',
     'IF',

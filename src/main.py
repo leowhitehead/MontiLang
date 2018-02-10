@@ -39,8 +39,8 @@ def interp(command):
                 DIVIDE()
             elif command == "INPUT":
                 INPUT()
-            elif command == "ROT":
-                ROT()
+            elif command == "SWAP":
+                SWAP()
             elif command == "OUT":
                 OUT()
         elif command in gVars:
@@ -56,6 +56,8 @@ def interp(command):
             FOR(command[1:-1])
         elif command[0] == 'WHILE':
             WHILE(command[1:-1])
+        elif command[0] == 'IF':
+            IF(command[1:-1])
         else:
             for i in command:
                 interp(i) #recursion op
@@ -183,7 +185,7 @@ def CLEAR():
 def VAR(call, name):
     global stack
     if name in dep.reserved:
-        errors.syntaxError()
+        errors.reserved()
     gVars[name] = stack[-1]
 
 def INPUT():
@@ -220,7 +222,7 @@ def WHILE(inst):
             return
     except IndexError:
         errors.valueError()
-    if type(inst[0]) == int:
+    if type(inst[0]) in [int, float]:
         if inst[0] > 0:
             while True:
                 interp(inst[1:])
@@ -232,15 +234,44 @@ def WHILE(inst):
                 interp(inst[1:])
         else:
             return
-    elif type(gVars[inst[0]]) == str:
-        while len(gVars[inst0]) > 0:
-            interp(inst[1:])
-    elif type(gVars[inst[0]]) == int:
-        while gVars[inst[0]] > 0:
-            interp(inst[1:])
+    elif inst[0] in gVars:
+        if type(gVars[inst[0]]) == str:
+            while len(gVars[inst0]) > 0:
+                interp(inst[1:])
+        elif type(gVars[inst[0]]) in [int, float]:
+            while gVars[inst[0]] > 0:
+                interp(inst[1:])
 
+def IF(inst):
+    try:
+        if inst[0] == 'PASS':
+            return
+    except IndexError:
+        errors.valueError()
+    if type(inst[0]) in [int, float]:
+        if inst[0] > 0:
+            interp(inst[1:]) 
+        else:
+            return
+    elif type(inst[0]) == str and inst[0] not in gVars:
+        if len(inst[0]) > 0:
+            interp(inst[1:])
+        else:
+            return
+    elif inst[0] in gVars:
+        if type(gVars[inst[0]]) == str:
+            if len(gVars[inst[0]]) > 0:
+                interp(inst[1:])
+        elif type(gVars[inst[0]]) in [int, float]:
+            if gVars[inst[0]] > 0:
+                interp(inst[1:])
+            else:
+                return
+        else:
+            errors.valueError()
     
-def ROT():
+
+def SWAP():
     global stack
     stack = stack[:-2] + stack[-2:][::-1]
 

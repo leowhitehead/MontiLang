@@ -33,3 +33,10 @@ def noClosingStatement(a = None):
     print "No closing statement for conditional/loop"
     sys.exit()
 
+def reserved():
+    print "Error: Cannot assign to reserved"
+    sys.exit()
+
+def error(a):
+    print a
+    sys.exit()
