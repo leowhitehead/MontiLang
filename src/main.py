@@ -52,8 +52,14 @@ def interp(command):
                 DUP()
             elif command == 'NIP':
                 NIP()
+            elif command == 'QUIT':
+                os._exit(1)
             elif command == 'EXIT':
                 os._exit(1)
+            elif command == 'HELP':
+                dep.HELP()
+            elif command == 'LICENSE':
+                dep.LICENSE()
         elif command in gVars:
             stack.append(gVars[command])
         elif command[-1] == '|' and command[0] == '|':

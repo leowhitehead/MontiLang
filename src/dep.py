@@ -1,5 +1,6 @@
 import sys
 import re
+import os
 
 replace = [['+', 'PLUS'], 
     ['-', 'MINUS'],
@@ -39,7 +40,10 @@ reserved = [
     'ENDWHILE',
     'FOR',
     'ENDFOR',
-    'EXIT'
+    'QUIT',
+    'EXIT',
+    'LICENSE',
+    'HELP'
 ]
 
 globalVs = {
@@ -105,3 +109,12 @@ def tryconvert(s, lower=False):
                 else:
                     return s
 
+def HELP():
+    print "\nFor language reference, see the documentation on the MontiLang Github repo"
+    print "https://github.com/lduck11007/MontiLang\n"
+    sys.exit()
+
+def LICENSE():
+    print "\nMonti v{} is open source and licensed under Mozilla Public License 2.0".format(globalVs['_VERSION'])
+    print "https://www.mozilla.org/en-US/MPL/2.0/\n"
+    sys.exit()
