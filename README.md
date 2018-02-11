@@ -40,6 +40,6 @@ Add `/dist/monti` to system path, so it can be called from anywhere.
 # Usage:
 To interperate a Monti file, use 
     monti file.mt
-Or to run the interactive REPL, just use 
+Or to run the interactive REPL, just use  
     monti
 
