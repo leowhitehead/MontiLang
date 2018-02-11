@@ -27,22 +27,19 @@ The easiest way to compile and use Monti is through the python package 'Pyinstal
 
 Install Pyinstaller from PyPI:
 
-`Python -m pip install pyinstaller`
+    Python -m pip install pyinstaller
 
 Navigate to /src directory and run
 
-`pyinstaller main.py -n monti`
+    pyinstaller main.py -n monti
 
 (Note: Monti can be converted to a standalone executable with the -F flag, however this is not reccomended as it creates a noticeable drop in performance.)
 
 Add `/dist/monti` to system path, so it can be called from anywhere.
 
 # Usage:
-To interperate a Monti file, use
-
-`monti file.mt`
-
-Or to run the interactive REPL, just use
-
-`monti`
+To interperate a Monti file, use 
+    monti file.mt
+Or to run the interactive REPL, just use 
+    monti
 
