@@ -10,3 +10,7 @@ Some of the features that are currently implemented are as follows:
 * Integer, float and string data types
 * Common operators (`+`, `-`, `*`, `%`, `/`, etc.)
 * Multi line comments
+* Nested loops and statements (`FOR`, `WHILE`, `IF`)
+* Stack manipulation commands (`SWAP`, `ROT`, `NIP`, `POP`, `DUP`)
+* User input
+* Integer and string manipulation
