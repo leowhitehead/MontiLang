@@ -33,7 +33,7 @@ Navigate to /src directory and run
 
     pyinstaller main.py -n monti
 
-(Note: Monti can be converted to a standalone executable with the -F flag, however this is not reccomended as it creates a noticeable drop in performance.)
+(Note: Monti can be converted to a standalone executable with the -F flag, however this is not recommended as it creates a noticeable drop in performance.)
 
 Add `/dist/monti` to system path, so it can be called from anywhere.
 
@@ -45,9 +45,9 @@ If no file is specified, Monti will launch into an interactive REPL
 
 # Example
 
-Example program that takes an input as a number, and prints that far into the fibonacci sequence.
+Example program that takes an input as a number, and prints that far into the Fibonacci sequence.
 
-        /# Test fibonacci program #/
+        /# Test Fibonacci program #/
         |Enter length of sequence: | INPUT NIP VAR loop .
 
         0 VAR a .
@@ -60,4 +60,4 @@ Example program that takes an input as a number, and prints that far into the fi
             c VAR b .
         ENDFOR
         
-See the `Documentation.mt` file in `/examples` for a more detailed explination of language features.
+See the `Documentation.mt` file in `/examples` for a more detailed explanation of language features.
