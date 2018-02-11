@@ -40,8 +40,24 @@ Add `/dist/monti` to system path, so it can be called from anywhere.
 # Usage:
 To interperate a Monti file, use 
 
-    monti file.mt
-Or to run the interactive REPL, just use
+    monti [file]
+If no file is specified, Monti will launch into an interactive REPL
 
-    monti
+# Example
 
+Example program that takes an input as a number, and prints that far into the fibonacci sequence.
+
+        /# Test fibonacci program #/
+        |Enter length of sequence: | INPUT NIP VAR loop .
+
+        0 VAR a .
+        1 VAR b .
+
+        FOR loop
+            a b + VAR c .
+            a PRINT .
+            b VAR a .
+            c VAR b .
+        ENDFOR
+        
+See the `Documentation.mt` file in `/examples` for a more detailed explination of language features.
