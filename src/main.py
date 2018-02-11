@@ -42,6 +42,8 @@ def interp(command):
                 INPUT()
             elif command == "SWAP":
                 SWAP()
+            elif command == "ROT":
+                ROT()
             elif command == "OUT":
                 OUT()
             elif command == "MAX":
@@ -172,6 +174,15 @@ def POP():
     """Remove top item from stack"""
     global stack
     stack.pop()
+
+def ROT():
+    global stack
+    if len(stack) < 3:
+        errors.stackArgumentLenError("ROT")
+    else:
+        temp = stack[-3]
+        del stack[-3]
+        stack.append(temp)
 
 def MOD():
     """Perform modulus of top 2 items of stack"""
