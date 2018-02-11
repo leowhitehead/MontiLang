@@ -38,7 +38,7 @@ Navigate to /src directory and run
 Add `/dist/monti` to system path, so it can be called from anywhere.
 
 # Usage:
-To interperate a Monti file, use 
+To interpret a Monti file, use 
 
     monti [file]
 If no file is specified, Monti will launch into an interactive REPL
