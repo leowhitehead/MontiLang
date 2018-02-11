@@ -79,7 +79,7 @@ def findLoop(t):
 
 def parse(instructions):
     instructions = re.sub(' +', ' ', instructions)
-    instructions = re.sub('/#[ a-zA-Z0-9!@$%^&*()\'\",|.-_=+]*#/', '', instructions)
+    instructions = re.sub('/#[ a-zA-Z0-9!@$%^&*()\'\",|.\-_\[\]=\;<>?:\{\}+]*#/', '', instructions)
     instructions = getArgs(instructions)
     for index, item in enumerate(instructions):
         for i in replace:

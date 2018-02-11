@@ -96,7 +96,6 @@ def main():
     file = open(sys.argv[1], 'r')
     instructions = file.read().replace('\n', ' ')
     instructions = dep.parse(instructions)
-    print instructions
     lex(instructions)
 
 def repl(first = True):
