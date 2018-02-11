@@ -8,5 +8,5 @@ Monti is a stack-based language revolving around imperative commands to manipula
 Some of the features that are currently implemented are as follows:
 
 * Integer, float and string data types
-* Common operators (`+`, `-`, '*`, '%', `//`, etc.)
+* Common operators (`+`, `-`, `*`, `%`, `/`, etc.)
 * Multi line comments
