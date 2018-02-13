@@ -29,7 +29,7 @@ Install Pyinstaller from PyPI:
 
     Python -m pip install pyinstaller
 
-Navigate to `/src `directory and run
+Navigate to `/src` directory and run
 
     pyinstaller main.py -n monti
 
