@@ -80,18 +80,19 @@ ENDFOR
 
 /# the syntax for while loops are similar. A number is evaluated as true if it is larger than
 0. a string is true if its length > 0. Infinite loops can be used by using literals.
-
+#/
 10 var loop .
 WHILE loop
     loop print .
     loop 1 - var loop
 ENDWHILE
-
+/#
 this loop would count down from 10.
 
 IF statements are pretty much the same, but only are executed once.
-
+#/
 IF loop
  loop PRINT .
 ENDIF
-This would only print 'loop' if it is larger than 0 #/
+
+/# This would only print 'loop' if it is larger than 0 #/

@@ -71,12 +71,6 @@ def getArgs(s):
     args.append(cur)
     return args
 
-def findLoop(t):   
-  inds = [index for index, item in enumerate(t) if item in ["IF", "ENDIF", "FOR", "ENDFOR", "WHILE", "ENDWHILE"]]
-  centre = inds[(len(inds)/2)-1:(len(inds)/2)+1]
-  newCentre = t[centre[0]:centre[1]+1]
-  return t[:centre[0]] + [newCentre] + t[centre[1]+1:]
-
 def parse(instructions):
     instructions = re.sub(' +', ' ', instructions)
     instructions = re.sub('/#[ a-zA-Z0-9!@$%^&*()\'\",|.\-_\[\]=\;<>?:\{\}+]*#/', '', instructions)
@@ -88,11 +82,14 @@ def parse(instructions):
     instructions = [tryconvert(i) for i in instructions if i != '']
     return instructions
 
-def getLoops(t):
-  inds = len([index for index, item in enumerate(t) if item in ["FOR", "IF", "WHILE"]])
-  for i in range(inds):
-    t = findLoop(t)
-  return t
+def sublists(lst):
+    t = [('FOR','ENDFOR'),('WHILE', 'ENDWHILE'),('IF','ENDIF')]
+    for start,end in t:
+      if start in lst:
+        a=lst.index(start)
+        b=lst.index(end)+1
+        lst[a:b] = [lst[a:b]]
+    return lst
 
 def tryconvert(s, lower=False):
     try:

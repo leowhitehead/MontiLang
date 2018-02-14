@@ -1,6 +1,6 @@
 /# takes a number as input, counts to number #/
 
-|Enter a number to count to: | INPUT SWAP . VAR count .
+|Enter a number to count to: | INPUT NIP VAR count .
 1 VAR num . 
 FOR count
     num print
