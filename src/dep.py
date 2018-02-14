@@ -1,6 +1,8 @@
 import sys
 import re
 import os
+from json import dumps, loads
+from ast import literal_eval
 
 replace = [['+', 'PLUS'], 
     ['-', 'MINUS'],
@@ -82,14 +84,16 @@ def parse(instructions):
     instructions = [tryconvert(i) for i in instructions if i != '']
     return instructions
 
-def sublists(lst):
-    t = [('FOR','ENDFOR'),('WHILE', 'ENDWHILE'),('IF','ENDIF')]
-    for start,end in t:
-      if start in lst:
-        a=lst.index(start)
-        b=lst.index(end)+1
-        lst[a:b] = [lst[a:b]]
-    return lst
+def getLoops(lst):
+    start_keywords = ['FOR', 'IF', 'WHILE']
+    end_keywords = ['ENDFOR', 'ENDIF', 'ENDWHILE']
+    dump = dumps(lst)
+    for k in start_keywords:
+        dump = dump.replace('"{}"'.format(k), '["{}"'.format(k))
+    for k in end_keywords:
+        dump = dump.replace('"{}"'.format(k), '"{}"]'.format(k))
+    loads(dump)
+    return literal_eval(dump)
 
 def tryconvert(s, lower=False):
     try:

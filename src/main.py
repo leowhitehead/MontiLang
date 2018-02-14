@@ -9,6 +9,7 @@ def lex(instructions):
         if i == "VAR":
             instructions[index] = ['VAR', instructions[index+1]]
             del instructions[index+1:index+2]
+    instructions = dep.getLoops(instructions)
     interp(instructions)
 
 def interp(command):
@@ -76,7 +77,6 @@ def interp(command):
         elif command[0] == 'IF':
             IF(command[1:-1])
         else:
-            command = dep.sublists(command)
             for i in command:
                 interp(i) #recursion op
     elif type(command) in [int, float]:
