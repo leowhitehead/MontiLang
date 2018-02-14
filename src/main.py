@@ -302,7 +302,7 @@ def WHILE(inst):
             return
     elif inst[0] in gVars:
         if type(gVars[inst[0]]) == str:
-            while len(gVars[inst0]) > 0:
+            while len(gVars[inst[0]]) > 0:
                 interp(inst[1:])
         elif type(gVars[inst[0]]) in [int, float]:
             while gVars[inst[0]] > 0:
