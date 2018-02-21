@@ -19,7 +19,7 @@ The following will be coming soon:
 
 * Control flow statements (`ELSE`, `ELSEIF`)
 * User defined functions
-* Equality, inequality and other operators (`==`, `>`, `<`, `&&`, `||` etc.)
+* Equality and inequality operators (`==`, `>`, `<`, `&&`, `||` etc.)
 
 # Installation
 

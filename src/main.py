@@ -14,53 +14,8 @@ def lex(instructions):
 
 def interp(command):
     if type(command) == str:
-        if command in dep.reserved:
-            if command == "PRINT":
-                PRINT()
-            elif command == "PSTACK":
-                PSTACK()
-            elif command == "PLUS":
-                PLUS()
-            elif command == "MINUS":
-                MINUS()
-            elif command == "POP":
-                POP()
-            elif command == "MULT":
-                MULT()
-            elif command == "MOD":
-                MOD()
-            elif command == "NEG":
-                NEG()
-            elif command == "ABS":
-                ABS()
-            elif command == "CLEAR":
-                CLEAR()
-            elif command == "DIV":
-                DIV()
-            elif command == "INPUT":
-                INPUT()
-            elif command == "SWAP":
-                SWAP()
-            elif command == "ROT":
-                ROT()
-            elif command == "OUT":
-                OUT()
-            elif command == "MAX":
-                MAX()
-            elif command == "MIN":
-                MIN()
-            elif command == "DUP":
-                DUP()
-            elif command == 'NIP':
-                NIP()
-            elif command == 'QUIT':
-                os._exit(1)
-            elif command == 'EXIT':
-                os._exit(1)
-            elif command == 'HELP':
-                dep.HELP()
-            elif command == 'LICENSE':
-                dep.LICENSE()
+        if command in dep.calls:
+            globals()[command]()
         elif command in gVars:
             stack.append(gVars[command])
         elif command[-1] == '|' and command[0] == '|':
@@ -249,7 +204,7 @@ def CLEAR():
 def VAR(call, name):
     """declares a new variable"""
     global stack
-    if name in dep.reserved:
+    if name in dep.reserved or name in dep.calls:
         errors.reserved()
     gVars[name] = stack[-1]
 
@@ -348,5 +303,19 @@ def OUT():
     else:
         sys.stdout.write(stack[-1])
         sys.stdout.flush()
+
+def QUIT():
+    os._exit(1)
+
+def HELP():
+    print "\nFor language reference, see the documentation on the MontiLang Github repo"
+    print "https://github.com/lduck11007/MontiLang\n"
+    sys.exit()
+
+def LICENSE():
+    print "\nMonti v{} is open source and licensed under Mozilla Public License 2.0".format(globalVs['_VERSION'])
+    print "https://www.mozilla.org/en-US/MPL/2.0/\n"
+    sys.exit()
+
 if __name__ == "__main__":
     main()

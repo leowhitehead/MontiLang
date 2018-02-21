@@ -83,7 +83,8 @@ ENDFOR
 #/
 10 var loop .
 WHILE loop
-    loop print 1 - var loop
+    loop print .
+    loop 1 - var loop
 ENDWHILE
 /#
 this loop would count down from 10.
