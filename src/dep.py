@@ -19,7 +19,8 @@ replace = [['+', 'PLUS'],
     ["<=", "LESSTHANEQ"],
     [">=", "MORETHANEQ"],
     ["==", "EQUALS"],
-    ["!=", "NOTEQUALS"]]
+    ["!=", "NOTEQUALS"],
+    [":", "TOP"]]
 
 calls = [
     'PRINT',
@@ -93,7 +94,7 @@ def getArgs(s):
 
 def parse(instructions):
     instructions = re.sub(' +', ' ', instructions)
-    instructions = re.sub('/#[ a-zA-Z0-9!@$%^&*()\'\",|.\-_\[\]=\;<>?:\{\}+]*#/', '', instructions)
+    instructions = re.sub('/#[ a-zA-Z0-9!@$%^&*()\'\",|.\-_\[\]=\;<>?:\{\}+]*#/', '', instructions) #sorry
     instructions = getArgs(instructions)
     for index, item in enumerate(instructions):
         for i in replace:

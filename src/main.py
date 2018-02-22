@@ -23,17 +23,20 @@ def interp(command):
         else:
             errors.invalidCommand(command)
     elif type(command) == list:
-        if command[0] == 'VAR':
-            VAR(*command)
-        elif command[0] == 'FOR':
-            FOR(command[1:-1])
-        elif command[0] == 'WHILE':
-            WHILE(command[1:-1])
-        elif command[0] == 'IF':
-            IF(command[1:-1])
-        else:
-            for i in command:
-                interp(i) #recursion op
+        try:
+            if command[0] == 'VAR':
+                VAR(*command)
+            elif command[0] == 'FOR':
+                FOR(command[1:-1])
+            elif command[0] == 'WHILE':
+                WHILE(command[1:-1])
+            elif command[0] == 'IF':
+                IF(command[1:-1])
+            else:
+                for i in command:
+                    interp(i) #recursion op
+        except IndexError:
+            sys.exit()
     elif type(command) in [int, float]:
         stack.append(command)
 
@@ -222,18 +225,22 @@ def INPUT():
     stack.append(ln)
 
 def FOR(inst):
+    if inst[0] == 'TOP':
+        arg = stack[-1]
+    else:
+        arg = inst[0]
     try:
         if inst[1] == 'PASS':
             return
     except IndexError:
         errors.valueError()
-    if type(inst[0]) == int:
-        for i in range(inst[0]):
+    if type(arg) == int:
+        for i in range(arg):
             interp(inst[1:])
-    elif type(gVars[inst[0]]) != int:
+    elif type(gVars[arg]) != int:
         errors.valueError()
     else:
-        for i in range(gVars[inst[0]]):
+        for i in range(gVars[arg]):
             interp(inst[1:])
 
 def WHILE(inst):
@@ -265,27 +272,31 @@ def WHILE(inst):
         errors.syntaxError()
 
 def IF(inst):
+    if inst[0] == "TOP":
+        arg = stack[-1]
+    else:
+        arg = inst[0]
     try:
-        if inst[0] == 'PASS':
+        if inst[1] == 'PASS':
             return
     except IndexError:
         errors.valueError()
-    if type(inst[0]) in [int, float]:
-        if inst[0] > 0:
+    if type(arg) in [int, float]:
+        if arg > 0:
             interp(inst[1:]) 
         else:
             return
-    elif type(inst[0]) == str and inst[0] not in gVars:
-        if len(inst[0]) > 0:
+    elif type(arg) == str and inst[0] not in gVars:
+        if len(arg) > 0:
             interp(inst[1:])
         else:
             return
-    elif inst[0] in gVars:
-        if type(gVars[inst[0]]) == str:
-            if len(gVars[inst[0]]) > 0:
+    elif arg in gVars:
+        if type(gVars[arg]) == str:
+            if len(gVars[arg]) > 0:
                 interp(inst[1:])
-        elif type(gVars[inst[0]]) in [int, float]:
-            if gVars[inst[0]] > 0:
+        elif type(gVars[arg]) in [int, float]:
+            if gVars[arg] > 0:
                 interp(inst[1:])
             else:
                 return
