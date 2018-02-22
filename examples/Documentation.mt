@@ -96,3 +96,27 @@ IF loop
 ENDIF
 
 /# This would only print 'loop' if it is larger than 0 #/
+
+/# If you would want to use the top item on the stack as loop parameters, this can be done with the ':' character #/
+
+/# eg, if you wanted to print 'hello' 5 times, instead of using #/
+
+FOR 7
+    |hello| PRINT .
+ENDFOR
+
+/# this could be used #/
+7
+FOR :
+    |hello| PRINT .
+ENDFOR
+
+/# Equality and inequality statements use the top 2 items on the stack as parameters, and replace the top two items with the output #/
+/# If it is true, the top 2 items are replaced with '1'. If false, with '0'. #/
+
+7 3 > PRINT . /# 1 #/
+2 10 > PRINT . /# 0 #/
+5 9 <= PRINT . /# 1 #/
+5 5 == PRINT . /# 1 #/
+5 7 == PRINT . /# 0 #/
+3 8 != PRINT . /# 1 #/
