@@ -1,11 +1,14 @@
 /# Monti Reference sheet #/
-
+/#
 /#
 Comments are multiline
 Nested comments are not supported 
 #/
 /# Whitespace is all arbitrary, indentation is optional #/
-/# All programming in Monti is done by manipulating the parameter stack #/
+/# All programming in Monti is done by manipulating the parameter stack 
+arithmetic and stack operations in MontiLang are similar to FORTH
+https://en.wikipedia.org/wiki/Forth_(programming_language)
+#/
 
 /# in Monti, everything is either a string or a number. Operations treat all numbers
 similarly to floats, but anything without a remainder is treated as type int #/
