@@ -396,7 +396,7 @@ def HELP():
     sys.exit()
 
 def LICENSE():
-    print "\nMonti v{} is open source and licensed under Mozilla Public License 2.0".format(globalVs['_VERSION'])
+    print "\nMonti v{} is open source and licensed under Mozilla Public License 2.0".format(gVars['_VERSION'])
     print "https://www.mozilla.org/en-US/MPL/2.0/\n"
     sys.exit()
 
