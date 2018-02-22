@@ -43,7 +43,7 @@ To interpret a Monti file, use
     monti [file]
 If no file is specified, Monti will launch into an interactive REPL
 
-# Example
+# Examples
 
 Example program that takes an input as a number, and prints that far into the Fibonacci sequence.
 
@@ -59,5 +59,30 @@ Example program that takes an input as a number, and prints that far into the Fi
             b VAR a .
             c VAR b .
         ENDFOR
-        
+
+FizzBuzz: Program that loops through numbers 1-100, prints 'fizz' if it is a multiple of 3, 'buzz' if a multiple of 5, and 'fizzbuzz' if both.
+
+        100 VAR loop .
+        1 VAR i .
+
+        FOR loop
+            || VAR ln .
+            i 5 % 0 == 
+            IF : .
+                ln |Buzz| + VAR ln .
+            ENDIF
+            i 3 % 0 ==
+            IF : .
+                ln |Fizz| + VAR ln .
+            ENDIF
+            ln || ==
+            IF : .
+                i PRINT .
+            ENDIF
+            ln || !=
+            IF : .
+                ln PRINT .
+            ENDIF
+        i 1 + VAR i .
+        ENDFOR
 See the `Documentation.mt` file in `/examples` for a more detailed explanation of language features.
