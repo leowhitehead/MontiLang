@@ -17,7 +17,9 @@ replace = [['+', 'PLUS'],
     ["<", "LESSTHAN"],
     [">", "MORETHAN"],
     ["<=", "LESSTHANEQ"],
-    [">=", "MORETHANEQ"]]
+    [">=", "MORETHANEQ"],
+    ["==", "EQUALS"],
+    ["!=", "NOTEQUALS"]]
 
 calls = [
     'PRINT',
@@ -45,6 +47,8 @@ calls = [
     'MORETHAN',
     'LESSTHANEQ',
     'MORETHANEQ',
+    'EQUALS',
+    'NOTEQUALS',
     'EXIT',
     'LICENSE',
     'HELP',

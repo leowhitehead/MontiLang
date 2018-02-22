@@ -344,6 +344,30 @@ def MORETHANEQ():
             del stack[-2:]
             stack.append(0)
 
+def EQUALS():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError('EQUALS')
+    else:
+        if stack[-2] == stack[-1]:
+            del stack[-2:]
+            stack.append(1)
+        else:
+            del stack[-2:]
+            stack.append(0)
+
+def NOTEQUALS():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError('EQUALS')
+    else:
+        if stack[-2] != stack[-1]:
+            del stack[-2:]
+            stack.append(1)
+        else:
+            del stack[-2:]
+            stack.append(0)
+
 def OUT():
     if len(stack) < 1:
         sys.stdout.write("None")
