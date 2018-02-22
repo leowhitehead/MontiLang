@@ -13,7 +13,11 @@ replace = [['+', 'PLUS'],
     ["CLS", "CLEAR"],
     ["cls", "CLEAR"],
     ["exit", "QUIT"],
-    ["EXIT", "QUIT"]]
+    ["EXIT", "QUIT"],
+    ["<", "LESSTHAN"],
+    [">", "MORETHAN"],
+    ["<=", "LESSTHANEQ"],
+    [">=", "MORETHANEQ"]]
 
 calls = [
     'PRINT',
@@ -37,6 +41,10 @@ calls = [
     'SWAP',
     'OUT',
     'QUIT',
+    'LESSTHAN',
+    'MORETHAN',
+    'LESSTHANEQ',
+    'MORETHANEQ',
     'EXIT',
     'LICENSE',
     'HELP',
@@ -51,7 +59,8 @@ reserved = [
     'FOR',
     'ENDFOR',
     'TRUE',
-    'FALSE'
+    'FALSE',
+    'TOP'
 ]
 globalVs = {
     'TRUE':1,

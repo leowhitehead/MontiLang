@@ -296,6 +296,54 @@ def SWAP():
     global stack
     stack = stack[:-2] + stack[-2:][::-1]
 
+def LESSTHAN():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError('LESSTHAN')
+    else:
+        if stack[-2] < stack[-1]:
+            del stack[-2:]
+            stack.append(1)
+        else:
+            del stack[-2:]
+            stack.append(0)
+
+def LESSTHANEQ():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError('LESSTHANEQ')
+    else:
+        if stack[-2] <= stack[-1]:
+            del stack[-2:]
+            stack.append(1)
+        else:
+            del stack[-2:]
+            stack.append(0)
+
+def MORETHAN():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError('MORETHAN')
+    else:
+        if stack[-2] > stack[-1]:
+            del stack[-2:]
+            stack.append(1)
+        else:
+            del stack[-2:]
+            stack.append(0)
+
+def MORETHANEQ():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError('MORETHANEQ')
+    else:
+        if stack[-2] >= stack[-1]:
+            del stack[-2:]
+            stack.append(1)
+        else:
+            del stack[-2:]
+            stack.append(0)
+
 def OUT():
     if len(stack) < 1:
         sys.stdout.write("None")
