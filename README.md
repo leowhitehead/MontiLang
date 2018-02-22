@@ -12,6 +12,7 @@ Some of the features that are currently implemented are as follows:
 * Multi line comments
 * Nested loops and statements (`FOR`, `WHILE`, `IF`)
 * Stack manipulation commands (`SWAP`, `ROT`, `NIP`, `POP`, `DUP`)
+* Equality, inequality and other operators (`==`, `>`, `<=`, etc.)
 * User input
 * Integer and string manipulation
 
@@ -19,7 +20,7 @@ The following will be coming soon:
 
 * Control flow statements (`ELSE`, `ELSEIF`)
 * User defined functions
-* Equality, inequality and other operators (`==`, `>`, `<`, `&&`, `||` etc.)
+* And/Or statements(`&&`, `||`)
 
 # Installation
 
