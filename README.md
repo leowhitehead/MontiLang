@@ -15,11 +15,11 @@ Some of the features that are currently implemented are as follows:
 * Equality, inequality and other operators (`==`, `>`, `<=`, etc.)
 * User input
 * Integer and string manipulation
+* User defined commands
 
 The following will be coming soon:
 
 * Control flow statements (`ELSE`, `ELSEIF`)
-* User defined functions
 * And/Or statements(`&&`, `||`)
 
 # Installation
