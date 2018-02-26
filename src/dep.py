@@ -73,6 +73,9 @@ globalVs = {
     '_VERSION':"1.0",
     '_PLATFORM':sys.platform
 }
+
+defs = {}
+
 def getArgs(s):
     args = []
     cur = ''
@@ -104,8 +107,8 @@ def parse(instructions):
     return instructions
 
 def getLoops(lst):
-    start_keywords = ['FOR', 'IF', 'WHILE']
-    end_keywords = ['ENDFOR', 'ENDIF', 'ENDWHILE']
+    start_keywords = ['FOR', 'IF', 'WHILE', 'DEF']
+    end_keywords = ['ENDFOR', 'ENDIF', 'ENDWHILE', 'ENDDEF']
     dump = dumps(lst)
     for k in start_keywords:
         dump = dump.replace('"{}"'.format(k), '["{}"'.format(k))

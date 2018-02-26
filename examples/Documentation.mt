@@ -102,7 +102,7 @@ ENDIF
 
 /# If you would want to use the top item on the stack as loop parameters, this can be done with the ':' character #/
 
-/# eg, if you wanted to print 'hello' 7 times, instead of using #/
+/# eg, if you wanted to print 'hello' 5 times, instead of using #/
 
 FOR 7
     |hello| PRINT .

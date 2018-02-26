@@ -20,6 +20,8 @@ def interp(command):
             stack.append(gVars[command])
         elif command[-1] == '|' and command[0] == '|':
             stack.append(command[1:-1])
+        elif command in defs:
+            interp(defs[command])
         else:
             errors.invalidCommand(command)
     elif type(command) == list:
@@ -32,6 +34,8 @@ def interp(command):
                 WHILE(command[1:-1])
             elif command[0] == 'IF':
                 IF(command[1:-1])
+            elif command[0] == 'DEF':
+                DEF(command[1:-1])
             else:
                 for i in command:
                     interp(i) #recursion op
@@ -43,8 +47,10 @@ def interp(command):
 def main():
     global stack
     global gVars
+    global defs
     stack = []
     gVars = dep.globalVs
+    defs = dep.defs
     if len(sys.argv) == 1:
         repl()
     elif sys.argv[1].upper() == '-V':
@@ -387,6 +393,13 @@ def OUT():
         sys.stdout.write(stack[-1])
         sys.stdout.flush()
 
+def DEF(inst):
+    global defs
+    if inst[0] in dep.calls or inst[0] in dep.reserved or type(inst[0]) != str:
+        errors.valueError()
+    else:
+        defs[inst[0]] = inst[1:]
+    print defs
 def QUIT():
     os._exit(1)
 
