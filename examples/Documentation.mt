@@ -110,7 +110,7 @@ ENDFOR
 
 /# this could be used #/
 7
-FOR :
+FOR : .
     |hello| PRINT .
 ENDFOR
 
