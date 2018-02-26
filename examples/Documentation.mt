@@ -123,3 +123,18 @@ ENDFOR
 5 5 == PRINT . /# 1 #/
 5 7 == PRINT . /# 0 #/
 3 8 != PRINT . /# 1 #/
+
+/# User defined commands have the syntax of 'DEF [name] [commands] ENDDEF'. #/
+/# eg, if you wanted to define a function with the name of 'printseven' to print '7' 10 times, this could be used #/
+
+DEF printseven
+    FOR 10
+       7 PRINT .
+    ENDFOR
+ENDDEF
+
+/# to run the defined statement, simply type it and it will be run by the interpereter #/
+
+printseven
+
+printseven
