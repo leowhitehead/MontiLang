@@ -136,5 +136,3 @@ ENDDEF
 /# to run the defined statement, simply type it and it will be run by the interpereter #/
 
 printseven
-
-printseven
