@@ -141,3 +141,7 @@ printseven
 
 1 0 AND PRINT . /# 0 #/
 1 1 AND PRINT . /# 1 #/
+1 0 OR PRINT . /# 1 #/
+0 0 OR PRINT . /# 0 #/
+1 NOT PRINT . /# 0 #/
+0 NOT PRINT . /# 1 #/
