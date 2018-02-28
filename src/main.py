@@ -385,6 +385,70 @@ def NOTEQUALS():
             del stack[-2:]
             stack.append(0)
 
+def AND():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError('AND')
+    else:
+        if type(stack[-1]) == type(stack[-2]) == int or type(stack[-1]) == type(stack[-2]) == float:
+            if stack[-1] > 0 and stack[-2] > 0:
+                del stack[-2:]
+                stack.append(1)
+            else:
+                del stack[-2:]
+                stack.append(0)
+        elif type(stack[-1]) == type(stack[-2]) == str:
+            if len(stack[-1]) > 0 and len(stack[-2]) > 0:
+                del stack[-2:]
+                stack.append(1)
+            else:
+                del stack[-2:]
+                stack.append(0)
+        else:
+            errors.valueError()
+
+def OR():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError('OR')
+    else:
+        if type(stack[-1]) == type(stack[-2]) == int or type(stack[-1]) == type(stack[-2]) == float:
+            if stack[-1] > 0 or stack[-2] > 0:
+                del stack[-2:]
+                stack.append(1)
+            else:
+                del stack[-2:]
+                stack.append(0)
+        elif type(stack[-1]) == type(stack[-2]) == str:
+            if len(stack[-1]) > 0 or len(stack[-2]) > 0:
+                del stack[-2:]
+                stack.append(1)
+            else:
+                del stack[-2:]
+                stack.append(0)
+        else:
+            errors.valueError()
+
+def NOT():
+    global stack
+    if len(stack) < 1:
+        errors.stackArgumentLenError('NOT')
+    else:
+        if type(stack[-1]) == str:
+            if len(stack[-1]) > 0:
+                del stack[-1]
+                stack.append(0)
+            else:
+                del stack[-1]
+                stack.append(1)
+        elif type(stack[-1]) in [int, float]:
+            if stack[-1] > 0:
+                del stack[-1]
+                stack.append(0)
+            else:
+                del stack[-1]
+                stack.append(1)
+
 def OUT():
     if len(stack) < 1:
         sys.stdout.write("None")

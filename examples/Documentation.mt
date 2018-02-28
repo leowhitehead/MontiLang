@@ -136,3 +136,8 @@ ENDDEF
 /# to run the defined statement, simply type it and it will be run by the interpereter #/
 
 printseven
+
+/# Montilang supports AND, OR and NOT statements #/
+
+1 0 AND PRINT . /# 0 #/
+1 1 AND PRINT . /# 1 #/

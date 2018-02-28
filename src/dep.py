@@ -53,6 +53,9 @@ calls = [
     'EXIT',
     'LICENSE',
     'HELP',
+    'AND',
+    'OR',
+    'NOT'
 ]
 
 reserved = [
