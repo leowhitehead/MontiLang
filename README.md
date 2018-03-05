@@ -16,11 +16,11 @@ Some of the features that are currently implemented are as follows:
 * User input
 * Integer and string manipulation
 * User defined commands
+* And/Or/Not statements
 
 The following will be coming soon:
 
 * Control flow statements (`ELSE`, `ELSEIF`)
-* And/Or statements(`&&`, `||`)
 
 # Installation
 
