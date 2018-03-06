@@ -2,4 +2,4 @@
 
 |What is your name? | INPUT NIP
 |Hello, | OUT 
-SWAP OUT
+SWAP PRINT .
