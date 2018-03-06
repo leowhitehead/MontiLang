@@ -20,7 +20,8 @@ Some of the features that are currently implemented are as follows:
 
 The following will be coming soon:
 
-* Control flow statements (`ELSE`, `ELSEIF`)
+* Additional data types
+* String and Array iteration
 
 # Installation
 
