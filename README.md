@@ -34,7 +34,7 @@ Install Pyinstaller from PyPi and download the MontiLang source code
     pyinstaller main.py -n monti
 **On windows:**  
 
-install (mysysgit)[https://gitforwindows.org/], run steps above the same.
+install [mysysgit](https://gitforwindows.org/), run steps above the same.
 
 **On Linux:** 
 
