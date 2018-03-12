@@ -41,7 +41,7 @@ Add `\MontiLang\src\dist\monti` to system path
 
 **On Linux:** 
 
-PyInstaller requires the ldd terminal application to discover the shared libraries required by each program or shared library. It is typically found in the distribution-package glibc or libc-bin.
+PyInstaller requires the `ldd` terminal application to discover the shared libraries required by each program or shared library. It is typically found in the distribution-package `glibc` or `libc-bin`. Ensure that Pyinstaller is installed and fully working.
 
 (Note: Monti can be converted to a standalone executable with the -F flag, however this is not recommended as it creates a noticeable drop in performance.)
 
