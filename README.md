@@ -39,7 +39,8 @@ install [mysysgit](https://gitforwindows.org/), or download source files directa
 
 **On Linux:** 
 
-use `pip`, or the built in package manager for your distro to install pyinstaller. If this does not work, install from the [Pyinstaller releases](https://github.com/pyinstaller/pyinstaller/releases) and run `setup.py`, or run straight from the source code from `pyinstaller.py`.
+use `pip`, or the built in package manager for your distro to install pyinstaller. If this does not work, install from the [Pyinstaller releases](https://github.com/pyinstaller/pyinstaller/releases) and run `setup.py`, or run straight from the source code from `pyinstaller.py`. 
+
     git clone https://github.com/lduck11007/MontiLang.git
     cd /MontiLang/src
     pyinstaller main.py -n monti
