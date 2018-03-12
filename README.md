@@ -36,6 +36,7 @@ Install Pyinstaller from PyPi and download the MontiLang source code
 
 install [mysysgit](https://gitforwindows.org/), run steps above the same.
 Add `\MontiLang\src\dist\monti` to system path
+
     SETX /M path "%path%;C:\[path_to_directory]\MontiLang\src\dist\monti"
 
 **On Linux:** 
