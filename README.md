@@ -32,10 +32,12 @@ Install Pyinstaller from PyPi and download the MontiLang source code
     git clone https://github.com/lduck11007/MontiLang.git
     cd MontiLang/src
     pyinstaller main.py -n monti
-**On windows:** 
+**On windows:**  
+
 install (mysysgit)[https://gitforwindows.org/], run steps above the same.
 
-**On Linux:**
+**On Linux:** 
+
 PyInstaller requires the ldd terminal application to discover the shared libraries required by each program or shared library. It is typically found in the distribution-package glibc or libc-bin.
 
 (Note: Monti can be converted to a standalone executable with the -F flag, however this is not recommended as it creates a noticeable drop in performance.)
