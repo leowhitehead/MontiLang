@@ -25,14 +25,7 @@ The following will be coming soon:
 
 # Installation
 
-The easiest way to compile and use Monti is through the python package 'Pyinstaller'
-
-Install Pyinstaller from PyPi and download the MontiLang source code
-
-    git clone https://github.com/lduck11007/MontiLang.git
-    cd MontiLang/src
-    pyinstaller main.py -n monti
-(Note: Monti can be converted to a standalone executable with the -F flag, however this is not recommended as it creates a noticeable drop in performance.)
+The easiest way to compile and use Monti is through the python package 'Pyinstaller'. Install Pyinstaller from PyPi and download the MontiLang source code.
 
 **On windows:**  
 
