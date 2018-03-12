@@ -35,7 +35,7 @@ Install Pyinstaller from PyPi and download the MontiLang source code
 **On windows:**  
 
 install [mysysgit](https://gitforwindows.org/), run steps above the same.
-Add `/MontiLang/src\dist\monti` to system path
+Add `\MontiLang\src\dist\monti` to system path
     SETX /M path "%path%;C:\[path_to_directory]\MontiLang\src\dist\monti"
 
 **On Linux:** 
@@ -43,8 +43,6 @@ Add `/MontiLang/src\dist\monti` to system path
 PyInstaller requires the ldd terminal application to discover the shared libraries required by each program or shared library. It is typically found in the distribution-package glibc or libc-bin.
 
 (Note: Monti can be converted to a standalone executable with the -F flag, however this is not recommended as it creates a noticeable drop in performance.)
-
-Add `/dist/monti` to system path, so it can be called from anywhere.
 
 # Usage:
 To interpret a Monti file, use 
