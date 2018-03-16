@@ -25,6 +25,8 @@ The following will be coming soon:
 
 # Installation
 
+The simplest way to use MontiLang is to download the binaries from the [Releases](https://github.com/lduck11007/MontiLang/releases) page. Alternatively, you can download and build from the source code with the instructions below. 
+
 The easiest way to compile and use Monti is through the python package 'Pyinstaller'. Install Pyinstaller from PyPi and download the MontiLang source code.
 
 **On windows:**  
