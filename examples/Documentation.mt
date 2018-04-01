@@ -146,5 +146,11 @@ printseven
 1 NOT PRINT . /# 0 #/
 0 NOT PRINT . /# 1 #/
 
-/# system commands similar to python's 'os.system()' function can be called with the instruction 'CMD' #/
-|echo $RANDOM| CMD . /# or on windows #/ |echo %RANDOM%| CMD .
+/# Preprocessor statements are made inbetween '&' characters #/
+/# currently, preprocessor statements can be used to make c++-style constants #/
+
+&DEFINE LOOP 20&
+/# must have & on either side with no spaces, 'DEFINE' is case sensative. #/
+/# All statements are scanned and replaced before the program is run, regardless of where the statements are placed #/
+
+FOR LOOP 7 PRINT . ENDFOR /# Prints '7' 20 times. At run, 'LOOP' in source code is replaced with '20' #/ 

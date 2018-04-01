@@ -34,6 +34,12 @@ def reserved():
     print "Error: Cannot assign to reserved"
     sys.exit()
 
+def preprocess(a = None):
+    if a:
+        print a
+    else:
+        print "Error scanning preprocessing statement"
+
 def error(a):
     print a
     sys.exit()

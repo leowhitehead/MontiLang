@@ -16,8 +16,8 @@ Some of the features that are currently implemented are as follows:
 * User input
 * Integer and string manipulation
 * User defined commands
-* And/Or/Not statements
-* System commands
+* And/Or/Not statements 
+* Preprocessor statements and C++ style constants
 
 The following will be coming soon:
 

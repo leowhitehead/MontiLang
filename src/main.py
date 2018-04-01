@@ -4,6 +4,23 @@ import os
 import errors
 import dep
 
+def main():
+    global stack
+    global gVars
+    global defs
+    stack = []
+    gVars = dep.globalVs
+    defs = dep.defs
+    if len(sys.argv) == 1:
+        repl()
+    elif sys.argv[1].upper() == '-V':
+        print "Monti v{}".format(dep.globalVs["_VERSION"])
+        sys.exit()
+    file = open(sys.argv[1], 'r')
+    instructions = file.read().replace('\n', ' ')
+    instructions = dep.parse(instructions)
+    lex(instructions)
+
 def lex(instructions):
     for index, i in enumerate(instructions):
         if i == "VAR":
@@ -43,23 +60,6 @@ def interp(command):
             sys.exit()
     elif type(command) in [int, float]:
         stack.append(command)
-
-def main():
-    global stack
-    global gVars
-    global defs
-    stack = []
-    gVars = dep.globalVs
-    defs = dep.defs
-    if len(sys.argv) == 1:
-        repl()
-    elif sys.argv[1].upper() == '-V':
-        print "Monti v{}".format(dep.globalVs["_VERSION"])
-        sys.exit()
-    file = open(sys.argv[1], 'r')
-    instructions = file.read().replace('\n', ' ')
-    instructions = dep.parse(instructions)
-    lex(instructions)
 
 def repl(first = True):
     if first:

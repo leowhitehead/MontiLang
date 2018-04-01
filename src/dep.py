@@ -3,6 +3,7 @@ import re
 import os
 from json import dumps, loads
 from ast import literal_eval
+from itertools import chain
 
 replace = [['+', 'PLUS'], 
     ['-', 'MINUS'],
@@ -80,6 +81,8 @@ globalVs = {
 
 defs = {}
 
+defined = []
+
 def getArgs(s):
     args = []
     cur = ''
@@ -103,6 +106,14 @@ def parse(instructions):
     instructions = re.sub(' +', ' ', instructions)
     instructions = re.sub('/#[ a-zA-Z0-9!@$%^&*()\'\",|.\-_\[\]=\;<>?:\{\}+]*#/', '', instructions) #sorry
     instructions = getArgs(instructions)
+    instructions = list(preprocess(instructions))
+    defined = [i[1:] for i in [x for x in instructions if type(x) == list and x[0] == 'DEFINE']]
+    included = [i[1:] for i in [x for x in instructions if type(x) == list and x[0] == 'INCLUDE']]
+    instructions = [x for x in instructions if x[0] not in ['DEFINE', 'INCLUDE']]
+    for index, item in enumerate(instructions):
+        for i in defined:
+            if item.lower() == i[0].lower():
+                instructions[index] = i[1]
     for index, item in enumerate(instructions):
         for i in replace:
             if item == i[0]:
@@ -122,6 +133,8 @@ def getLoops(lst):
     return literal_eval(dump)
 
 def tryconvert(s, lower=False):
+    if type(s) == list:
+        return s
     try:
         return int(s)
     except ValueError:
@@ -135,3 +148,15 @@ def tryconvert(s, lower=False):
                     return s.upper()
                 else:
                     return s
+
+def preprocess(elements):
+    elements = iter(elements)
+    for position, element in enumerate(elements):
+        if element.startswith('&'):
+            yield list(preprocess(chain([element[1:]], elements)))
+        elif element.endswith('&'):
+            element = element[:-1]
+            yield element
+            return
+        else:
+            yield element
