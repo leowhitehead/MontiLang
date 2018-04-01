@@ -464,8 +464,16 @@ def DEF(inst):
     else:
         defs[inst[0]] = inst[1:]
     print defs
+
+def CMD():
+    if len(stack) < 1:
+        errors.stackArgumentLenError('CMD')
+    else:
+        os.system(stack[-1])
+
 def QUIT():
     os._exit(1)
+
 
 def HELP():
     print "\nFor language reference, see the documentation on the MontiLang Github repo"

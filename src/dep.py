@@ -55,7 +55,8 @@ calls = [
     'HELP',
     'AND',
     'OR',
-    'NOT'
+    'NOT',
+    'CMD'
 ]
 
 reserved = [
