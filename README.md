@@ -76,10 +76,10 @@ Example program that takes an input as a number, and prints that far into the Fi
 
 FizzBuzz: Program that loops through numbers 1-100, prints 'fizz' if it is a multiple of 3, 'buzz' if a multiple of 5, and 'fizzbuzz' if both.
 
-        100 VAR loop .
+        &DEFINE LOOP 100&
         1 VAR i .
 
-        FOR loop
+        FOR LOOP
             || VAR ln .
             i 5 % 0 == 
             IF : .
