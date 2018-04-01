@@ -145,3 +145,6 @@ printseven
 0 0 OR PRINT . /# 0 #/
 1 NOT PRINT . /# 0 #/
 0 NOT PRINT . /# 1 #/
+
+/# system commands similar to python's 'os.system()' function can be called with the instruction 'CMD' #/
+|echo $RANDOM| CMD . /# or on windows #/ |echo %RANDOM%| CMD .
