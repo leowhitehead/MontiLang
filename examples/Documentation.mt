@@ -149,8 +149,20 @@ printseven
 /# Preprocessor statements are made inbetween '&' characters #/
 /# currently, preprocessor statements can be used to make c++-style constants #/
 
-&DEFINE LOOP 20&
+&DEFINE LOOPSTR 20&
 /# must have & on either side with no spaces, 'DEFINE' is case sensative. #/
 /# All statements are scanned and replaced before the program is run, regardless of where the statements are placed #/
 
-FOR LOOP 7 PRINT . ENDFOR /# Prints '7' 20 times. At run, 'LOOP' in source code is replaced with '20' #/ 
+FOR LOOPSTR 7 PRINT . ENDFOR /# Prints '7' 20 times. At run, 'LOOPSTR' in source code is replaced with '20' #/ 
+
+/# Multiple files can be used with the &INCLUDE <filename>& Command that operates similar to c++, where the file specified is tokenized,
+   and the &INCLUDE statement is replaced with the file #/
+   
+/# E.G, you can have a program be run through several files. If you had the file 'name.mt' with the following data:
+
+[name.mt]
+|Hello, | OUT . NAME PRINT .
+
+a program that asks for your name and then prints it out can be defined as such: #/
+
+|What is your name? | INPUT VAR name . &INCLUDE name.mt&
