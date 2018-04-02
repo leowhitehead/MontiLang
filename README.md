@@ -17,7 +17,8 @@ Some of the features that are currently implemented are as follows:
 * Integer and string manipulation
 * User defined commands
 * And/Or/Not statements 
-* Preprocessor statements and C++ style constants
+* Preprocessor statements and C++ style constants 
+* Support for Multiple files with &INCLUDE commands
 
 The following will be coming soon:
 
