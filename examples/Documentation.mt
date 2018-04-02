@@ -161,7 +161,7 @@ FOR LOOPSTR 7 PRINT . ENDFOR /# Prints '7' 20 times. At run, 'LOOPSTR' in source
 /# E.G, you can have a program be run through several files. If you had the file 'name.mt' with the following data:
 
 [name.mt]
-|Hello, | OUT . NAME PRINT .
+|Hello, | OUT . name PRINT .
 
 a program that asks for your name and then prints it out can be defined as such: #/
 
