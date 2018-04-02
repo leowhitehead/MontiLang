@@ -21,13 +21,14 @@ def main():
     instructions = dep.parse(instructions)
     lex(instructions)
 
-def lex(instructions):
+def lex(instructions, inter=True):
     for index, i in enumerate(instructions):
         if i == "VAR":
             instructions[index] = ['VAR', instructions[index+1]]
             del instructions[index+1:index+2]
     instructions = dep.getLoops(instructions)
-    interp(instructions)
+    if inter:
+        interp(instructions)
 
 def interp(command):
     if type(command) == str:

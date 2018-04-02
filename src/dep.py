@@ -4,6 +4,7 @@ import os
 from json import dumps, loads
 from ast import literal_eval
 from itertools import chain
+import errors
 
 replace = [['+', 'PLUS'], 
     ['-', 'MINUS'],
@@ -81,8 +82,6 @@ globalVs = {
 
 defs = {}
 
-defined = []
-
 def getArgs(s):
     args = []
     cur = ''
@@ -109,7 +108,13 @@ def parse(instructions):
     instructions = list(preprocess(instructions))
     defined = [i[1:] for i in [x for x in instructions if type(x) == list and x[0] == 'DEFINE']]
     included = [i[1:] for i in [x for x in instructions if type(x) == list and x[0] == 'INCLUDE']]
-    instructions = [x for x in instructions if x[0] not in ['DEFINE', 'INCLUDE']]
+    instructions = [x for x in instructions if x[0] != 'DEFINE']
+    for index, item in enumerate(instructions):
+        if item[0] == 'INCLUDE':
+            try:
+                instructions[index] = include(item[1])
+            except:
+                errors.error('error')
     for index, item in enumerate(instructions):
         for i in defined:
             if item.lower() == i[0].lower():
@@ -119,6 +124,7 @@ def parse(instructions):
             if item == i[0]:
                 instructions[index] = i[1]
     instructions = [tryconvert(i) for i in instructions if i != '']
+    print instructions
     return instructions
 
 def getLoops(lst):
@@ -160,3 +166,9 @@ def preprocess(elements):
             return
         else:
             yield element
+
+def include(filename):
+    file = open(filename, 'r')
+    instructions = file.read().replace('\n', ' ')
+    instructions = parse(instructions)
+    return instructions
