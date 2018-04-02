@@ -108,13 +108,17 @@ def parse(instructions):
     instructions = list(preprocess(instructions))
     defined = [i[1:] for i in [x for x in instructions if type(x) == list and x[0] == 'DEFINE']]
     included = [i[1:] for i in [x for x in instructions if type(x) == list and x[0] == 'INCLUDE']]
-    instructions = [x for x in instructions if x[0] != 'DEFINE']
+    try:
+        instructions = [x for x in instructions if x[0] != 'DEFINE']
+    except:
+        pass
     for index, item in enumerate(instructions):
-        if item[0] == 'INCLUDE':
-            try:
-                instructions[index] = include(item[1])
-            except:
-                errors.error('error')
+        if type(item) == list:
+            if item[0] == 'INCLUDE':
+                try:
+                    instructions[index] = include(item[1])
+                except:
+                    errors.error('error')
     for index, item in enumerate(instructions):
         for i in defined:
             if item.lower() == i[0].lower():
