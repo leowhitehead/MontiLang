@@ -124,7 +124,6 @@ def parse(instructions):
             if item == i[0]:
                 instructions[index] = i[1]
     instructions = [tryconvert(i) for i in instructions if i != '']
-    print instructions
     return instructions
 
 def getLoops(lst):
