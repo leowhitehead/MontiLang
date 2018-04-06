@@ -1,10 +1,10 @@
 import sys
 import re
 import os
+import errors
 from json import dumps, loads
 from ast import literal_eval
 from itertools import chain
-import errors
 
 replace = [['+', 'PLUS'], 
     ['-', 'MINUS'],
@@ -108,17 +108,13 @@ def parse(instructions):
     instructions = list(preprocess(instructions))
     defined = [i[1:] for i in [x for x in instructions if type(x) == list and x[0] == 'DEFINE']]
     included = [i[1:] for i in [x for x in instructions if type(x) == list and x[0] == 'INCLUDE']]
-    try:
-        instructions = [x for x in instructions if x[0] != 'DEFINE']
-    except:
-        pass
+    instructions = [x for x in instructions if x[0] != 'DEFINE']
     for index, item in enumerate(instructions):
-        if type(item) == list:
-            if item[0] == 'INCLUDE':
-                try:
-                    instructions[index] = include(item[1])
-                except:
-                    errors.error('error')
+        if item[0] == 'INCLUDE':
+            try:
+                instructions[index] = include(item[1])
+            except:
+                errors.error('error')
     for index, item in enumerate(instructions):
         for i in defined:
             if item.lower() == i[0].lower():
@@ -127,6 +123,7 @@ def parse(instructions):
         for i in replace:
             if item == i[0]:
                 instructions[index] = i[1]
+    instructions = flatten(instructions)
     instructions = [tryconvert(i) for i in instructions if i != '']
     return instructions
 
@@ -170,8 +167,18 @@ def preprocess(elements):
         else:
             yield element
 
+def getVars(instructions):
+    for index, i in enumerate(instructions):
+        if i == "VAR":
+            instructions[index] = ['VAR', instructions[index+1]]
+            del instructions[index+1:index+2]
+    instructions = getLoops(instructions)
+    return instructions
+
 def include(filename):
     file = open(filename, 'r')
     instructions = file.read().replace('\n', ' ')
-    instructions = parse(instructions)
     return instructions
+
+flatten = lambda *n: (e for a in n
+    for e in (flatten(*a) if isinstance(a, (tuple, list)) else (a,)))

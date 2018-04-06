@@ -19,16 +19,8 @@ def main():
     file = open(sys.argv[1], 'r')
     instructions = file.read().replace('\n', ' ')
     instructions = dep.parse(instructions)
-    lex(instructions)
-
-def lex(instructions, inter=True):
-    for index, i in enumerate(instructions):
-        if i == "VAR":
-            instructions[index] = ['VAR', instructions[index+1]]
-            del instructions[index+1:index+2]
-    instructions = dep.getLoops(instructions)
-    if inter:
-        interp(instructions)
+    instructions = dep.getVars(instructions)
+    interp(instructions)
 
 def interp(command):
     if type(command) == str:
@@ -72,8 +64,9 @@ def repl(first = True):
         except (KeyboardInterrupt, EOFError):
             sys.exit()
         line = dep.parse(line)
+        line = dep.getVars(line)
         try:
-            lex(line)
+            interp(line)
         except:
             repl(False)
 

@@ -1,10 +1,10 @@
 /# loops through numbers 1-100. Prints 'Fizz' if it is a multiple of 3, 'Buzz' if it is a multiple of 5,
 'FizzBuzz' if it is a multiple of both, or the number if neither #/
 
-100 VAR loop .
+&DEFINE LOOP 100&
 1 VAR i .
 
-FOR loop
+FOR LOOP
     || VAR ln .
     i 5 % 0 == 
     IF : .
