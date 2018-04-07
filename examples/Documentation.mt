@@ -1,6 +1,5 @@
 /# Monti Reference sheet #/
 /#
-/#
 Comments are multiline
 Nested comments are not supported 
 #/
