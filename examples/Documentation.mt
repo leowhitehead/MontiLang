@@ -45,7 +45,7 @@ similarly to floats, but anything without a remainder is treated as type int #/
 2 6 SWAP PSTACK CLEAR /# [6, 2] - Swap top 2 items on stack #/
 1 2 3 ROT PSTACK CLEAR /# [2, 3, 1] - Rotate top 3 items on stack #/
 2 3 NIP PSTACK CLEAR /# [3] - delete second item from the top of the stack #/
-
+4 5 6 TRIM PSTACK CLEAR /# [5, 6] - Deletes first item on stack #/
 /# variables are assigned with the syntax 'VAR [name]'#/
 /# When assigned, the variable will take the value of the top item of the stack #/
 

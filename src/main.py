@@ -19,8 +19,16 @@ def main():
     file = open(sys.argv[1], 'r')
     instructions = file.read().replace('\n', ' ')
     instructions = dep.parse(instructions)
-    instructions = dep.getVars(instructions)
-    interp(instructions)
+    lex(instructions)
+
+def lex(instructions, inter=True):
+    for index, i in enumerate(instructions):
+        if i == "VAR":
+            instructions[index] = ['VAR', instructions[index+1]]
+            del instructions[index+1:index+2]
+    instructions = dep.getLoops(instructions)
+    if inter:
+        interp(instructions)
 
 def interp(command):
     if type(command) == str:
@@ -64,9 +72,8 @@ def repl(first = True):
         except (KeyboardInterrupt, EOFError):
             sys.exit()
         line = dep.parse(line)
-        line = dep.getVars(line)
         try:
-            interp(line)
+            lex(line)
         except:
             repl(False)
 
@@ -306,6 +313,13 @@ def IF(inst):
 def SWAP():
     global stack
     stack = stack[:-2] + stack[-2:][::-1]
+
+def TRIM():
+    global stack
+    if len(stack) < 1:
+        errors.stackArgumentLenError("TRIM")
+    else:
+        del stack[0]
 
 def LESSTHAN():
     global stack

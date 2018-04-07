@@ -11,7 +11,7 @@ Some of the features that are currently implemented are as follows:
 * Common operators (`+`, `-`, `*`, `%`, `/`, etc.)
 * Multi line comments
 * Nested loops and statements (`FOR`, `WHILE`, `IF`)
-* Stack manipulation commands (`SWAP`, `ROT`, `NIP`, `POP`, `DUP`)
+* Stack manipulation commands (`SWAP`, `ROT`, `NIP`, `POP`, `DUP`, `TRIM`)
 * Equality, inequality and other operators (`==`, `>`, `<=`, etc.)
 * User input
 * Integer and string manipulation
