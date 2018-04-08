@@ -18,7 +18,7 @@ def main():
         sys.exit()
     file = open(sys.argv[1], 'r')
     instructions = file.read().replace('\n', ' ')
-    instructions = dep.parse(instructions)
+    instructions = dep.parse(instructions, "-c" in ' '.join(sys.argv).lower())
     lex(instructions)
 
 def lex(instructions, inter=True):

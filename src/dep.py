@@ -102,7 +102,7 @@ def getArgs(s):
     args.append(cur)
     return args
 
-def parse(instructions):
+def parse(instructions, output=False):
     instructions = re.sub(' +', ' ', instructions)
     instructions = re.sub('/#[ a-zA-Z0-9!@$%^&*()\'\",|.\-_\[\]=\;<>?:\{\}+]*#/', '', instructions) #sorry
     instructions = getArgs(instructions)
@@ -128,7 +128,11 @@ def parse(instructions):
         for i in replace:
             if item == i[0]:
                 instructions[index] = i[1]
+    instructions = flatten(instructions)
     instructions = [tryconvert(i) for i in instructions if i != '']
+    if output:
+        print " ".join(instructions)
+        sys.exit()
     return instructions
 
 def getLoops(lst):
@@ -176,3 +180,6 @@ def include(filename):
     instructions = file.read().replace('\n', ' ')
     instructions = parse(instructions)
     return instructions
+
+flatten = lambda *n: (e for a in n
+    for e in (flatten(*a) if isinstance(a, (tuple, list)) else (a,)))
