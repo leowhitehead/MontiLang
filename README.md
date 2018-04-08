@@ -33,7 +33,7 @@ The easiest way to compile and use Monti is through the python package 'Pyinstal
 
 **On windows:**  
 
-install [mysysgit](https://gitforwindows.org/), or download source files directally. 
+install [mysysgit](https://gitforwindows.org/), or download source files directly. 
 
     python -m pip install pyinstaller
     git clone https://github.com/lduck11007/MontiLang.git
@@ -43,7 +43,7 @@ install [mysysgit](https://gitforwindows.org/), or download source files directa
 
 **On Linux:** 
 
-use `pip`, or the built in package manager for your distro to install pyinstaller. If this does not work, install from the [Pyinstaller releases](https://github.com/pyinstaller/pyinstaller/releases) and run `setup.py`, or run straight from the source code from `pyinstaller.py`. 
+use `pip`, or the built-in package manager for your distro to install pyinstaller. If this does not work, install from the [Pyinstaller releases](https://github.com/pyinstaller/pyinstaller/releases) and run `setup.py`, or run straight from the source code from `pyinstaller.py`. 
 
     git clone https://github.com/lduck11007/MontiLang.git
     cd /MontiLang/src
@@ -55,8 +55,9 @@ add `/src/dist/monti` to system path by editing `/etc/profile`, `/etc/environmen
 # Usage:
 To interpret a Monti file, use 
 
-    monti [file]
+    path/to/monti/executable [file] [optional commands]
 If no file is specified, Monti will launch into an interactive REPL
+using the `-c` flag will not run the program, but will preprocess and print the source code as it is read by the interpreter
 
 # Examples
 
