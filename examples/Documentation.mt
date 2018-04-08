@@ -51,6 +51,9 @@ similarly to floats, but anything without a remainder is treated as type int #/
 6 VAR six . /# assigns var 'six' to be equal to 6 #/
 3 6 + VAR a . /# assigns var 'a' to be equal to 9 #/
 
+/# the length of the stack can be calculated with the statement 'STKLEN' #/
+1 2 3 4 STKLEN PRINT CLEAR /# 4 #/
+
 /# strings are defined with | | #/
 
 |Hello World!| VAR world . /# sets variable 'world' equal to string 'Hello world! #/ 
@@ -165,3 +168,34 @@ FOR LOOPSTR 7 PRINT . ENDFOR /# Prints '7' 20 times. At run, 'LOOPSTR' in source
 a program that asks for your name and then prints it out can be defined as such: #/
 
 |What is your name? | INPUT VAR name . &INCLUDE name.mt&
+
+/# ARRAYS: #/
+
+/# arrays are defined with the statement 'ARR'
+When called, everything currently in the stack is put into one
+array and all items on the stack are replaced with the new array. #/
+
+2 3 4 ARR PSTACK . /# [[2, 3, 4]] #/
+
+/# the statement 'LEN' adds the length of the last item on the stack to the stack.
+This can be used on arrays, as well as strings. #/
+
+3 4 5 ARR LEN PRINT . /# 3 #/
+
+/# an array at the top of the stack can be wiped with the statement 'WIPE' #/
+3 4 5 ARR WIPE PRINT . /# [] #/
+
+/# The last item of an array can be removed with the statement 'DROP' #/
+
+3 4 5 ARR DROP PRINT . /# [3, 4]
+/# arrays, like other datatypes can be stored in variables #/
+5 6 7 ARR VAR list .
+list PRINT . /# [5, 6, 7] #/
+
+/# Values at specific indexes can be changed with the statement 'INSERT <index>' #/
+4 5 6 ARR 
+97 INSERT 1 . PRINT /# 4, 97, 6 #/
+
+/# Values at specific indexes can be deleted with the statement 'DEL <index>' #/
+1 2 3 ARR
+DEL 1 PRINT . /# [1, 3] #/

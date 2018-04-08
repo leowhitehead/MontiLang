@@ -16,7 +16,11 @@ def main():
     elif sys.argv[1].upper() == '-V':
         print "Monti v{}".format(dep.globalVs["_VERSION"])
         sys.exit()
-    file = open(sys.argv[1], 'r')
+    try:
+        file = open(sys.argv[1], 'r')
+    except IOError:
+        print "Invalid file"
+        sys.exit()
     instructions = file.read().replace('\n', ' ')
     instructions = dep.parse(instructions, "-c" in ' '.join(sys.argv).lower())
     lex(instructions)
@@ -25,6 +29,12 @@ def lex(instructions, inter=True):
     for index, i in enumerate(instructions):
         if i == "VAR":
             instructions[index] = ['VAR', instructions[index+1]]
+            del instructions[index+1:index+2]
+        elif i == "INSERT":
+            instructions[index] = ['INSERT', instructions[index+1]]
+            del instructions[index+1:index+2]
+        elif i == 'DEL':
+            instructions[index] = ['DEL', instructions[index+1]]
             del instructions[index+1:index+2]
     instructions = dep.getLoops(instructions)
     if inter:
@@ -54,6 +64,10 @@ def interp(command):
                 IF(command[1:-1])
             elif command[0] == 'DEF':
                 DEF(command[1:-1])
+            elif command[0] == "INSERT":
+                INSERT(command[1])
+            elif command[0] == "DEL":
+                DEL(command[1])
             else:
                 for i in command:
                     interp(i) #recursion op
@@ -138,6 +152,51 @@ def POP():
     """Remove top item from stack"""
     global stack
     stack.pop()
+
+def DROP():
+    global stack
+    if len(stack) < 1:
+        errors.stackArgumentLenError("DROP")
+    else:
+        if type(stack[-1]) != list:
+            errors.valueError()
+        else:
+            if len(stack[-1]) < 1:
+                errors.indexError("DROP from empty list")
+            else:
+                del stack[-1][-1]
+def APPEND():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError("APPEND")
+    else:
+        if type(stack[-2]) != list:
+            errors.valueError()
+        else:
+            stack[-2].append(stack[-1])
+
+def INDEX():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError("INDEX")
+    else:
+        if type(stack[-2]) != list or type(stack[-1]) != int:
+            errors.valueError()
+        else:
+            try:            
+                stack.append(stack[-2][stack[-1]])
+            except:
+                errors.indexError("Array index out of range")
+
+def WIPE():
+    global stack
+    if len(stack) < 1:
+        errors.stackArgumentLenError("WIPE")
+    else:
+        if type(stack[-1]) != list:
+            errors.valueError()
+        else:
+            del stack[-1][:]
 
 def ROT():
     global stack
@@ -313,7 +372,13 @@ def IF(inst):
                 return
         else:
             errors.valueError()
-    
+
+def ARR():
+    global stack
+    temp = [x for x in stack]
+    stack = []
+    stack.append(temp)
+
 def SWAP():
     global stack
     stack = stack[:-2] + stack[-2:][::-1]
@@ -461,6 +526,16 @@ def NOT():
                 del stack[-1]
                 stack.append(1)
 
+def LEN():
+    global stack
+    if len(stack) < 1:
+        errors.stackArgumentLenError("LEN")
+    else:
+        if type(stack[-1]) in [str, list]:
+            stack.append(len(stack[-1]))
+        else:
+            errors.valueError()
+
 def OUT():
     if len(stack) < 1:
         sys.stdout.write("None")
@@ -468,6 +543,32 @@ def OUT():
     else:
         sys.stdout.write(stack[-1])
         sys.stdout.flush()
+
+def INSERT(index):
+    global stack 
+    if len(stack) < 2:
+        errors.stackArgumentLenError("INSERT")
+    else:
+        if type(stack[-2]) != list:
+            errors.valueError()
+        else:
+            try:
+                stack[-2][index] = stack[-1]
+            except IndexError:
+                errors.indexError("Array index out of range")
+
+def DEL(index):
+    global stack
+    if len(stack) < 1:
+        errors.stackArgumentLenError("DEL")
+    else:
+        if type(stack) != list:
+            errors.valueError()
+        else:
+            try:
+                del stack[-1][index]
+            except IndexError:
+                errors.indexError("Array index out of range")
 
 def DEF(inst):
     global defs

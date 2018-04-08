@@ -19,11 +19,11 @@ Some of the features that are currently implemented are as follows:
 * And/Or/Not statements 
 * Preprocessor statements and C++ style constants with `&DEFINE` commands
 * Support for Multiple files with `&INCLUDE` commands
+* Arrays
 
 The following will be coming soon:
 
-* Additional data types
-* String and Array iteration
+* Additional data types and operators
 
 # Installation
 

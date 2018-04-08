@@ -40,6 +40,13 @@ def preprocess(a = None):
     else:
         print "Error scanning preprocessing statement"
 
+def indexError(a = None):
+    if a:
+        print "IndexError: {}".format(a)
+    else:
+        print "IndexError"
+    sys.exit()
+
 def error(a):
     print a
     sys.exit()
