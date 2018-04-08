@@ -206,6 +206,10 @@ def NIP():
     else:
         del stack[-2]
 
+def STKLEN():
+    global stack
+    stack.append(len(stack))
+
 def CLEAR():
     """Wipe stack"""
     global stack

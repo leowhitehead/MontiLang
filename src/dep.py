@@ -47,6 +47,7 @@ calls = [
     'SWAP',
     'OUT',
     'QUIT',
+    'STKLEN',
     'LESSTHAN',
     'MORETHAN',
     'LESSTHANEQ',
@@ -131,7 +132,7 @@ def parse(instructions, output=False):
     instructions = flatten(instructions)
     instructions = [tryconvert(i) for i in instructions if i != '']
     if output:
-        print " ".join(instructions)
+        print " ".join([str(x) for x in instructions])
         sys.exit()
     return instructions
 
