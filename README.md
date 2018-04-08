@@ -55,10 +55,11 @@ add `/src/dist/monti` to system path by editing `/etc/profile`, `/etc/environmen
 # Usage:
 To interpret a Monti file, use 
 
-    path/to/monti/executable [file] [optional commands]
+    path/to/monti/executable [file] <optional flags>
 
-If no file is specified, Monti will launch into an interactive REPL  
-using the `-c` flag will not run the program, but will preprocess and print the source code as it is read by the interpreter
+If no file is specified, Monti will launch into an interactive REPL
+
+Including the the `-c` flag will cause the program to not run, but will preprocess and print the source code as it is read by the interpreter
 
 # Examples
 
