@@ -576,7 +576,6 @@ def DEF(inst):
         errors.valueError()
     else:
         defs[inst[0]] = inst[1:]
-    print defs
 
 def CMD():
     if len(stack) < 1:
