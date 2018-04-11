@@ -36,6 +36,9 @@ def lex(instructions, inter=True):
         elif i == 'DEL':
             instructions[index] = ['DEL', instructions[index+1]]
             del instructions[index+1:index+2]
+        elif i == 'GET':
+            instructions[index] = ['GET', instructions[index+1]]
+            del instructions[index+1:index+2]
     instructions = dep.getLoops(instructions)
     if inter:
         interp(instructions)
@@ -68,6 +71,8 @@ def interp(command):
                 INSERT(command[1])
             elif command[0] == "DEL":
                 DEL(command[1])
+            elif command[0] == "GET":
+                GET(command[1])
             else:
                 for i in command:
                     interp(i) #recursion op
@@ -562,13 +567,26 @@ def DEL(index):
     if len(stack) < 1:
         errors.stackArgumentLenError("DEL")
     else:
-        if type(stack) != list:
+        if type(stack[-1]) != list:
             errors.valueError()
         else:
             try:
                 del stack[-1][index]
             except IndexError:
                 errors.indexError("Array index out of range")
+
+def GET(index):
+    global stack
+    if len(stack) < 1:
+        errors.stackArgumentLenError("GET")
+    else:
+        if type(stack[-1]) not in [list, str]:
+            errors.valueError()
+        else:
+            try:
+                stack.append(stack[-1][index])
+            except IndexError:
+                errors.indexError("index out of range")
 
 def DEF(inst):
     global defs
