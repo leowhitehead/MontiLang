@@ -52,7 +52,6 @@ calls = [
     'INPUT',
     'LEN',
     'GET',
-    'INDEX',
     'ROT',
     'SWAP',
     'OUT',

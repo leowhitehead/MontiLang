@@ -180,19 +180,6 @@ def APPEND():
         else:
             stack[-2].append(stack[-1])
 
-def INDEX():
-    global stack
-    if len(stack) < 2:
-        errors.stackArgumentLenError("INDEX")
-    else:
-        if type(stack[-2]) != list or type(stack[-1]) != int:
-            errors.valueError()
-        else:
-            try:            
-                stack.append(stack[-2][stack[-1]])
-            except:
-                errors.indexError("Array index out of range")
-
 def WIPE():
     global stack
     if len(stack) < 1:
