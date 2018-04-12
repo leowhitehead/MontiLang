@@ -537,7 +537,9 @@ def OUT():
         sys.stdout.flush()
 
 def INSERT(index):
-    global stack 
+    global stack
+    if index in dep.globalVs:
+        index = dep.globalVs[index]
     if len(stack) < 2:
         errors.stackArgumentLenError("INSERT")
     else:
@@ -551,6 +553,8 @@ def INSERT(index):
 
 def DEL(index):
     global stack
+    if index in dep.globalVs:
+        index = dep.globalVs[index]
     if len(stack) < 1:
         errors.stackArgumentLenError("DEL")
     else:
@@ -564,6 +568,8 @@ def DEL(index):
 
 def GET(index):
     global stack
+    if index in dep.globalVs:
+        index = dep.globalVs[index]
     if len(stack) < 1:
         errors.stackArgumentLenError("GET")
     else:
