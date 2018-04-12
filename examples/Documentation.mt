@@ -66,6 +66,10 @@ world PRINT .
 
 |world!| |Hello, | OUT SWAP PRINT CLEAR
 
+/# Data types can be converted between strings and integers with the commands 'TOINT' and 'TOSTR'#/
+|5| TOINT PSTACK . /# [5] #/
+45 TOSTR PSTACK . /# ['45'] #/
+
 /# User input is taken with INPUT and pushed to the stack. If the top item of the stack is a string, 
 the string is used as an input prompt #/
 

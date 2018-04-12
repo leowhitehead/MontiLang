@@ -595,6 +595,20 @@ def DEF(inst):
     else:
         defs[inst[0]] = inst[1:]
 
+def TOSTR():
+    global stack
+    try:
+        stack[-1] = str(stack[-1])
+    except ValueError:
+        errors.conversionError("Convert to str")
+
+def TOINT():
+    global stack
+    try:
+        stack[-1] = int(stack[-1])
+    except ValueError:
+        errors.conversionError("Convert to int")
+
 def CMD():
     if len(stack) < 1:
         errors.stackArgumentLenError('CMD')

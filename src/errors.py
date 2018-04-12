@@ -47,6 +47,13 @@ def indexError(a = None):
         print "IndexError"
     sys.exit()
 
+def conversionError(a = None):
+    if a:
+        print "Conversion error: {}".format(a)
+    else:
+        print "Conversion error"
+    sys.exit()
+
 def error(a):
     print a
     sys.exit()

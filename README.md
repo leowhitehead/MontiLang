@@ -7,7 +7,7 @@ Monti is a stack-based language revolving around imperative commands to manipula
 # Current State
 Some of the features that are currently implemented are as follows:
 
-* Integer, float and string data types
+* Multiple Data types and type conversion
 * Common operators (`+`, `-`, `*`, `%`, `/`, etc.)
 * Multi line comments
 * Nested loops and statements (`FOR`, `WHILE`, `IF`)

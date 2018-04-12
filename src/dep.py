@@ -46,6 +46,8 @@ calls = [
     'TRIM',
     'VAR',
     'DIV',
+    'TOINT',
+    'TOSTR',
     'CLEAR',
     'INPUT',
     'LEN',
