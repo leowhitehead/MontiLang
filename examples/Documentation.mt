@@ -204,6 +204,6 @@ list PRINT . /# [5, 6, 7] #/
 1 2 3 ARR
 DEL 1 PRINT . /# [1, 3] #/
 
-/# items at certain indexes of an array can be gotten with the statement 'GET <index' #/
+/# items at certain indexes of an array can be gotten with the statement 'GET <index>' #/
 
 1 2 3 ARR GET 2 PSTACK /# [[1, 2, 3], 3] #/
