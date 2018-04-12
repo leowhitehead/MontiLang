@@ -43,6 +43,7 @@ calls = [
     'WIPE',
     'NIP',
     'ABS',
+    'ADD',
     'TRIM',
     'VAR',
     'DIV',

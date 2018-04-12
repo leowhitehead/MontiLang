@@ -180,6 +180,16 @@ def APPEND():
         else:
             stack[-2].append(stack[-1])
 
+def ADD():
+    global stack
+    if len(stack) < 2:
+        errors.stackArgumentLenError("ADD")
+    else:
+        if type(stack[-2]) != list:
+            errors.valueError()
+        else:
+            stack[-2].insert(0, stack[-1])
+            
 def WIPE():
     global stack
     if len(stack) < 1:

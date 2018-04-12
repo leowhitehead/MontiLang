@@ -186,6 +186,10 @@ This can be used on arrays, as well as strings. #/
 
 3 4 5 ARR LEN PRINT . /# 3 #/
 
+/# values can be appended to an array with the statement 'APPEND' #/
+
+1 2 3 ARR 5 APPEND . PRINT . /# [1, 2, 3, 5] #/
+
 /# an array at the top of the stack can be wiped with the statement 'WIPE' #/
 3 4 5 ARR WIPE PRINT . /# [] #/
 
