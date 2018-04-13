@@ -1,5 +1,5 @@
-50 VAR length .
-70 VAR height .
+100 VAR length .
+100 VAR height .
 
 FOR length 0 ENDFOR 1 0 ARR VAR list . 
 length 1 - VAR topLen . 
@@ -14,6 +14,17 @@ DEF getNeighbors
     GET tempIndex SWAP .
     FOR 3 TOSTR ROT ENDFOR
     FOR 2 SWAP + ENDFOR  
+ENDDEF
+
+DEF printArr
+    LEN 1 - VAR stLen .
+    0 VAR j .
+    FOR stLen
+        GET j 
+        TOSTR OUT .
+        j 1 + VAR j .
+    ENDFOR
+    || PRINT .
 ENDDEF
 
 topLst PRINT .
@@ -65,6 +76,6 @@ FOR height
         clear
         i 1 + VAR i .
     ENDFOR 
-    next print .
+    next printArr .
     next 0 ADD APPEND . VAR list .
 ENDFOR
