@@ -88,7 +88,7 @@ reserved = [
 globalVs = {
     'TRUE':1,
     'FALSE':0,
-    '_VERSION':"1.0",
+    '_VERSION':"2.0",
     '_PLATFORM':sys.platform
 }
 
