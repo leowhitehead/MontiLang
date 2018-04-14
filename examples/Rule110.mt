@@ -27,7 +27,6 @@ DEF printArr
     || PRINT .
 ENDDEF
 
-topLst PRINT .
 FOR height
     FOR length 0 ENDFOR ARR VAR next .
     1 VAR i .
