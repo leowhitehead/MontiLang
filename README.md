@@ -57,7 +57,7 @@ To interpret a Monti file, use
 
     path/to/monti/executable [file] <optional flags>
 
-If no file is specified, Monti will launch into an interactive REPL
+If no file is specified, Monti will launch into an interactive shell
 
 Including the the `-c` flag will cause the program to not run, but will preprocess and print the source code as it is read by the interpreter
 
