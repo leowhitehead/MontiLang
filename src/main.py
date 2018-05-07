@@ -22,6 +22,7 @@ def main():
         print "Invalid file"
         sys.exit()
     instructions = file.read().replace('\n', ' ')
+    instructions = instructions.replace('\t', '')
     instructions = dep.parse(instructions, "-c" in ' '.join(sys.argv).lower())
     lex(instructions)
 
