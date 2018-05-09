@@ -1,4 +1,4 @@
-/# Generates first 8 iterations of the regular paperfold sequence #/
+/# Gets an input as integer and prints that far into the Regular Paperfold Series #/
 
 DEF reverse
     VAR list LEN VAR i CLS
@@ -31,7 +31,7 @@ DEF update
 ENDDEF
 
 DEF printArr
-    LEN 1 - VAR stLen .
+    LEN VAR stLen .
     0 VAR j .
     FOR stLen
         GET j 
@@ -41,6 +41,6 @@ DEF printArr
     || PRINT .
 ENDDEF
 
+|Enter a number: | INPUT NIP TOINT VAR loop .
 1 ARR 
-FOR 8 update ENDFOR
-printArr
+FOR loop update printArr ENDFOR
