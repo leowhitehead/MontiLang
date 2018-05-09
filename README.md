@@ -104,3 +104,5 @@ FizzBuzz: Program that loops through numbers 1-100, prints 'fizz' if it is a mul
         i 1 + VAR i .
         ENDFOR
 See the `Documentation.mt` file in `/examples` for a more detailed explanation of language features.
+
+Help contribute to MontiLang, add examples on rosettacode at https://rosettacode.org/wiki/Category:MontiLang
