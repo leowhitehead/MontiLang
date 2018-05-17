@@ -55,7 +55,7 @@ add `/src/dist/monti` to system path by editing `/etc/profile`, `/etc/environmen
 # Usage:
 To interpret a Monti file, use 
 
-    path/to/monti/executable [file] <optional flags>
+    monti [file] <optional flags>
 
 If no file is specified, Monti will launch into an interactive shell
 
