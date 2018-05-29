@@ -1,4 +1,4 @@
-<img align="left" width="75%" height="75%" src="icon.png">
+<img align="left" src="icon.png">
 
 # MontiLang
 
