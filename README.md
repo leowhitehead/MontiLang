@@ -1,5 +1,6 @@
-<img align="left" src="icon.png">
 # MontiLang
+<img align="left" src="icon.png">
+
 An imperative stack-based programming language developed in python.
 
 # About
