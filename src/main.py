@@ -544,7 +544,7 @@ def OUT():
         sys.stdout.write("None")
         sys.stdout.flush()
     else:
-        sys.stdout.write(stack[-1])
+        sys.stdout.write(str(stack[-1]))
         sys.stdout.flush()
 
 def INSERT(index):
