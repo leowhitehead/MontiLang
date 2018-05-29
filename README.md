@@ -34,6 +34,8 @@ The simplest way to use MontiLang is to download the binaries from the [Releases
 
 The easiest way to compile and use Monti is through the python package 'Pyinstaller'. Install Pyinstaller from PyPi and download the MontiLang source code.
 
+Note: It is recomended that you build from source, as it is very easy, and gives full access to newer features that have not been added to release yet.
+
 **On windows:**  
 
 install [mysysgit](https://gitforwindows.org/), or download source files directly. 
