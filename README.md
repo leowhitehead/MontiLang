@@ -1,3 +1,4 @@
+<img align="left" src="icon.png">
 # MontiLang
 An imperative stack-based programming language developed in python.
 
