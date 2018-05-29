@@ -111,3 +111,54 @@ FizzBuzz: Program that loops through numbers 1-100, prints 'fizz' if it is a mul
 See the `Documentation.mt` file in `/examples` for a more detailed explanation of language features.
 
 Help contribute to MontiLang, add examples on rosettacode at https://rosettacode.org/wiki/Category:MontiLang
+
+
+### Extras
+
+#### Why MontiLang is better than Python
+
+##### Better floating point accuracy
+
+**Python:**
+```python
+>>>0.1 + 0.2
+0.30000000000000004
+```
+
+**MontiLang:**
+```nginx
+>>>0.1 0.2 + PRINT .
+0.3
+```
+
+##### Easier use of system commands
+
+**Python:**
+```python
+from os import system
+command = raw_input()
+system(command)
+```
+
+**MontiLang:**
+```nginx
+INPUT CMD
+```
+
+##### Automatic int/float conversion
+
+**Python:**
+```python
+>>>print 1 / 2
+0
+# Or:
+>>>from __future__ import division
+>>>print 1 / 2
+0.5
+```
+
+**MontiLang:**
+```nginx
+>>>1 2 / PRINT .
+0.5
+```
