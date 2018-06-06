@@ -43,7 +43,7 @@ install [mysysgit](https://gitforwindows.org/), or download source files directl
     python -m pip install pyinstaller
     git clone https://github.com/lduck11007/MontiLang.git
     cd MontiLang/src
-    pyinstaller main.py -n monti
+    pyinstaller --icon=../icon.ico main.py -n monti
     SETX /M path "%path%;C:\[path_to_directory]\MontiLang\src\dist\monti"
 
 **On Linux:** 
