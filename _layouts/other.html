@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+
+  <head>
+    <title>MontiLang | Stack-Oriented Imperative programming language</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="icon" href="assets/images/icon.png">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <style>      
+      #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: red;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 4px;
+      }
+      
+      #myBtn:hover {
+        background-color: #555;
+      }
+      .titleheader img{
+        float: left;
+        width: 50px;
+        height: 50px;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        box-shadow: none !important;
+      }
+
+      .titleheader h1 {
+        position: relative;
+        top: 18px;
+        left: 10px;
+      }
+      </style>
+{% seo %}
+  </head>
+
+  <body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              document.getElementById("myBtn").style.display = "block";
+          } else {
+              document.getElementById("myBtn").style.display = "none";
+          }
+      }
+      
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+      }
+      </script>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/lduck11007/MontiLang">View on GitHub</a>
+
+          <div class="titleheader">
+            <img src="assets/images/icon.png" />
+            <h1 id="project_title">MontiLang</h1>
+        </div>          <h2 id="project_tagline"><a href="./index.html">About</a> | <a href="./examples.html">Examples</a> | <a href="./documentation.html">Documentation</a> | <a href="./downloads.html">Downloads</a></h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        {{ content }}
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright"><b>Contact: </b><br/> Email: <a href="mailto:lduck11007@gmail.com">lduck11007@gmail.com</a> <br/>
+          Github: <a href="https://github.com/lduck11007/">github.com/lduck11007/</a>
+          </p>        
+      </footer>
+    </div>
+
+    {% if site.google_analytics %}
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', '{{ site.google_analytics }}', 'auto');
+        ga('send', 'pageview');
+      </script>
+    {% endif %}
+  </body>
+</html>

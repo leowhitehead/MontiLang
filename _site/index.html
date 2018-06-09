@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <title>MontiLang | Stack-Oriented Imperative programming language</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="icon" href="assets/images/icon.png">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=">
+    <style>      
+      #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: red;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 4px;
+      }
+      
+      #myBtn:hover {
+        background-color: #555;
+      }
+      
+
+      .titleheader img{
+        float: left;
+        width: 50px;
+        height: 50px;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        box-shadow: none !important;
+      }
+
+      .titleheader h1 {
+        position: relative;
+        top: 18px;
+        left: 10px;
+      }
+      
+      </style>
+<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Slate theme | Slate is a theme for GitHub Pages.</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Slate theme" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Slate is a theme for GitHub Pages." />
+<meta property="og:description" content="Slate is a theme for GitHub Pages." />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Slate theme" />
+<script type="application/ld+json">
+{"headline":"Slate theme","url":"http://localhost:4000/","name":"Slate theme","description":"Slate is a theme for GitHub Pages.","@type":"WebSite","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              document.getElementById("myBtn").style.display = "block";
+          } else {
+              document.getElementById("myBtn").style.display = "none";
+          }
+      }
+      
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+      }
+      </script>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/lduck11007/MontiLang">View on GitHub</a>
+          <div class="titleheader">
+              <img src="assets/images/icon.png" />
+              <h1 id="project_title">MontiLang</h1>
+          </div>
+          <h2 id="project_tagline">A Customizable Stack-Oriented Imperative Programming language</h2>
+          <h2 id="project_tagline"><a href="./index.html">About</a> | <a href="./examples.html">Examples</a> | <a href="./documentation.html">Documentation</a> | <a href="./downloads.html">Downloads</a></h2>
+          
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/lduck11007/MontiLang/releases/download/2.0/MontiLang2-0Win.tar.gz">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/lduck11007/MontiLang/releases/download/2.0/MontiLang2-0Linux.tar.gz">Download this project as a tar.gz file</a>
+            </section>
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="about">About</h1>
+<p>MontiLang is a Stack-Oriented imperative programming language developed in python. It is highly customisable and contains many features found in higher level and Object Oriented languages.</p>
+
+<h1 id="current-state">Current State</h1>
+<p>Some of the features that are currently implemented are as follows:</p>
+
+<ul>
+  <li>Multiple Data types and type conversion</li>
+  <li>Common operators (<code class="highlighter-rouge">+</code>, <code class="highlighter-rouge">-</code>, <code class="highlighter-rouge">*</code>, <code class="highlighter-rouge">%</code>, <code class="highlighter-rouge">/</code>, etc.)</li>
+  <li>Multi line comments</li>
+  <li>Nested loops and statements (<code class="highlighter-rouge">FOR</code>, <code class="highlighter-rouge">WHILE</code>, <code class="highlighter-rouge">IF</code>)</li>
+  <li>Stack manipulation commands (<code class="highlighter-rouge">SWAP</code>, <code class="highlighter-rouge">ROT</code>, <code class="highlighter-rouge">NIP</code>, <code class="highlighter-rouge">POP</code>, <code class="highlighter-rouge">DUP</code>, <code class="highlighter-rouge">TRIM</code>)</li>
+  <li>Equality, inequality and other operators (<code class="highlighter-rouge">==</code>, <code class="highlighter-rouge">&gt;</code>, <code class="highlighter-rouge">&lt;=</code>, etc.)</li>
+  <li>User input</li>
+  <li>Integer and string manipulation</li>
+  <li>User defined commands</li>
+  <li>And/Or/Not statements</li>
+  <li>Preprocessor statements and C++ style constants with <code class="highlighter-rouge">&amp;DEFINE</code> commands</li>
+  <li>Support for Multiple files with <code class="highlighter-rouge">&amp;INCLUDE</code> commands</li>
+  <li>Arrays</li>
+</ul>
+
+<p>The following will be coming soon:</p>
+
+<ul>
+  <li>Additional data types and operators</li>
+</ul>
+
+<h1 id="installation">Installation</h1>
+
+<p>The simplest way to use MontiLang is to download the binaries from the <a href="https://github.com/lduck11007/MontiLang/releases">Releases</a> page. Alternatively, you can download and build from the source code with the instructions below.</p>
+
+<p>The easiest way to compile and use Monti is through the python package ‘Pyinstaller’. Install Pyinstaller from PyPi and download the MontiLang source code.</p>
+
+<p><strong>On windows:</strong></p>
+
+<p>install <a href="https://gitforwindows.org/">mysysgit</a>, or download source files directly.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m pip install pyinstaller
+git clone https://github.com/lduck11007/MontiLang.git
+cd MontiLang/src
+pyinstaller main.py -n monti
+SETX /M path "%path%;C:\[path_to_directory]\MontiLang\src\dist\monti"
+</code></pre></div></div>
+
+<p><strong>On Linux:</strong></p>
+
+<p>use <code class="highlighter-rouge">pip</code>, or the built-in package manager for your distro to install pyinstaller. If this does not work, install from the <a href="https://github.com/pyinstaller/pyinstaller/releases">Pyinstaller releases</a> and run <code class="highlighter-rouge">setup.py</code>, or run straight from the source code from <code class="highlighter-rouge">pyinstaller.py</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/lduck11007/MontiLang.git
+cd /MontiLang/src
+pyinstaller main.py -n monti add `/src/dist/monti` to system path by editing `/etc/profile`, `/etc/environment` or however your distro handles `PATH`
+</code></pre></div></div>
+
+<h1 id="usage">Usage:</h1>
+<p>To interpret a Monti file, use</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>path/to/monti/executable [file] &lt;optional flags&gt;
+</code></pre></div></div>
+
+<p>If no file is specified, Monti will launch into an interactive REPL</p>
+
+<p>Including the the <code class="highlighter-rouge">-c</code> flag will cause the program to not run, but will preprocess and print the source code as it is read by the interpreter</p>
+
+<h1 id="examples">Examples</h1>
+
+<p>Example program that takes an input as a number, and prints that far into the Fibonacci sequence.</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">/</span><span class="c1"># Test Fibonacci program #/
+</span><span class="s">|Enter</span> <span class="s">length</span> <span class="s">of</span> <span class="s">sequence:</span> <span class="s">|</span> <span class="s">INPUT</span> <span class="s">NIP</span> <span class="s">VAR</span> <span class="s">loop</span> <span class="s">.</span>
+
+<span class="mi">0</span> <span class="s">VAR</span> <span class="s">a</span> <span class="s">.</span>
+<span class="mi">1</span> <span class="s">VAR</span> <span class="s">b</span> <span class="s">.</span>
+<span class="s">FOR</span> <span class="s">loop</span>
+    <span class="s">a</span> <span class="s">b</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">c</span> <span class="s">.</span>
+    <span class="s">a</span> <span class="s">PRINT</span> <span class="s">.</span>
+    <span class="s">b</span> <span class="s">VAR</span> <span class="s">a</span> <span class="s">.</span>
+    <span class="s">c</span> <span class="s">VAR</span> <span class="s">b</span> <span class="s">.</span>
+<span class="s">ENDFOR</span>
+</code></pre></div></div>
+
+<p>FizzBuzz: Program that loops through numbers 1-100, prints ‘fizz’ if it is a multiple of 3, ‘buzz’ if a multiple of 5, and ‘fizzbuzz’ if both.
+&amp;DEFINE LOOP 100&amp;
+1 VAR i .</p>
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FOR</span> <span class="s">LOOP</span>
+    <span class="s">||</span> <span class="s">VAR</span> <span class="s">ln</span> <span class="s">.</span>
+    <span class="s">i</span> <span class="mi">5</span> <span class="s">%</span> <span class="mi">0</span> <span class="p">==</span> 
+    <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+        <span class="s">ln</span> <span class="s">|Buzz|</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">ln</span> <span class="s">.</span>
+    <span class="s">ENDIF</span>
+    <span class="s">i</span> <span class="mi">3</span> <span class="s">%</span> <span class="mi">0</span> <span class="p">==</span>
+    <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+        <span class="s">ln</span> <span class="s">|Fizz|</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">ln</span> <span class="s">.</span>
+    <span class="s">ENDIF</span>
+    <span class="s">ln</span> <span class="s">||</span> <span class="p">==</span>
+    <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+        <span class="s">i</span> <span class="s">PRINT</span> <span class="s">.</span>
+    <span class="s">ENDIF</span>
+    <span class="s">ln</span> <span class="s">||</span> <span class="s">!=</span>
+    <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+        <span class="s">ln</span> <span class="s">PRINT</span> <span class="s">.</span>
+    <span class="s">ENDIF</span>
+<span class="s">i</span> <span class="mi">1</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">i</span> <span class="s">.</span>
+<span class="s">ENDFOR</span>
+</code></pre></div></div>
+<p>See the <code class="highlighter-rouge">Documentation.mt</code> file in <code class="highlighter-rouge">/examples</code> for a more detailed explanation of language features.</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright"><b>Contact: </b><br/> Email: <a href="mailto:lduck11007@gmail.com">lduck11007@gmail.com</a> <br/>
+        Github: <a href="https://github.com/lduck11007/">github.com/lduck11007/</a>
+        </p>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

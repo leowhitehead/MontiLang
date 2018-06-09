@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <title>MontiLang | Stack-Oriented Imperative programming language</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="icon" href="assets/images/icon.png">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=">
+    <style>      
+      #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: red;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 4px;
+      }
+      
+      #myBtn:hover {
+        background-color: #555;
+      }
+      .titleheader img{
+        float: left;
+        width: 50px;
+        height: 50px;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        box-shadow: none !important;
+      }
+
+      .titleheader h1 {
+        position: relative;
+        top: 18px;
+        left: 10px;
+      }
+      </style>
+<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Slate theme | Slate is a theme for GitHub Pages.</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Slate theme" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Slate is a theme for GitHub Pages." />
+<meta property="og:description" content="Slate is a theme for GitHub Pages." />
+<link rel="canonical" href="http://localhost:4000/documentation.html" />
+<meta property="og:url" content="http://localhost:4000/documentation.html" />
+<meta property="og:site_name" content="Slate theme" />
+<script type="application/ld+json">
+{"headline":"Slate theme","url":"http://localhost:4000/documentation.html","description":"Slate is a theme for GitHub Pages.","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              document.getElementById("myBtn").style.display = "block";
+          } else {
+              document.getElementById("myBtn").style.display = "none";
+          }
+      }
+      
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+      }
+      </script>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/lduck11007/MontiLang">View on GitHub</a>
+
+          <div class="titleheader">
+            <img src="assets/images/icon.png" />
+            <h1 id="project_title">MontiLang</h1>
+        </div>          <h2 id="project_tagline"><a href="./index.html">About</a> | <a href="./examples.html">Examples</a> | <a href="./documentation.html">Documentation</a> | <a href="./downloads.html">Downloads</a></h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="montilang-reference-sheet">MontiLang Reference Sheet</h1>
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">/</span><span class="c1">#
+</span><span class="s">Comments</span> <span class="s">are</span> <span class="s">multiline</span>
+<span class="s">Nested</span> <span class="s">comments</span> <span class="s">are</span> <span class="s">not</span> <span class="s">supported</span> 
+<span class="c1">#/
+</span><span class="n">/</span><span class="c1"># Whitespace is all arbitrary, indentation is optional #/
+</span><span class="n">/</span><span class="c1"># All programming in Monti is done by manipulating the parameter stack 
+</span><span class="s">arithmetic</span> <span class="s">and</span> <span class="s">stack</span> <span class="s">operations</span> <span class="s">in</span> <span class="s">MontiLang</span> <span class="s">are</span> <span class="s">similar</span> <span class="s">to</span> <span class="s">FORTH</span>
+<span class="s">https://en.wikipedia.org/wiki/Forth_(programming_language)</span>
+<span class="c1">#/
+</span>
+<span class="n">/</span><span class="c1"># in Monti, everything is either a string or a number. Operations treat all numbers
+</span><span class="s">similarly</span> <span class="s">to</span> <span class="s">floats,</span> <span class="s">but</span> <span class="s">anything</span> <span class="s">without</span> <span class="s">a</span> <span class="s">remainder</span> <span class="s">is</span> <span class="s">treated</span> <span class="s">as</span> <span class="s">type</span> <span class="s">int</span> <span class="c1">#/
+</span>
+<span class="n">/</span><span class="c1"># numbers and strings are added to the stack from left to right #/
+</span>
+<span class="n">/</span><span class="c1"># Arithmetic works by manipulating data on the stack #/
+</span>
+<span class="mi">5</span> <span class="mi">3</span> <span class="s">+</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 8 #/
+</span>
+<span class="n">/</span><span class="c1">#  5 and 3 are pushed onto the stack
+</span>    <span class="s">'+'</span> <span class="s">replaces</span> <span class="s">top</span> <span class="mi">2</span> <span class="s">items</span> <span class="no">on</span> <span class="s">stack</span> <span class="s">with</span> <span class="s">sum</span> <span class="s">of</span> <span class="s">top</span> <span class="mi">2</span> <span class="s">items</span>
+    <span class="s">'PRINT'</span> <span class="s">prints</span> <span class="s">out</span> <span class="s">the</span> <span class="s">top</span> <span class="s">item</span> <span class="no">on</span> <span class="s">the</span> <span class="s">stack</span>
+    <span class="s">'.'</span> <span class="s">pops</span> <span class="s">the</span> <span class="s">top</span> <span class="s">item</span> <span class="s">from</span> <span class="s">the</span> <span class="s">stack.</span> 
+    <span class="c1">#/
+</span>
+<span class="mi">6</span> <span class="mi">7</span> <span class="s">*</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 42 #/
+</span><span class="mi">1360</span> <span class="mi">23</span> <span class="s">-</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 1337 #/
+</span><span class="mi">12</span> <span class="mi">12</span> <span class="n">/</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 1 #/
+</span><span class="mi">13</span> <span class="mi">2</span> <span class="s">%</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 1 #/
+</span>
+<span class="mi">37</span> <span class="s">NEG</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># -37 #/
+</span><span class="s">-12</span> <span class="s">ABS</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 12 #/
+</span><span class="mi">52</span> <span class="mi">23</span> <span class="s">MAX</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 52 #/
+</span><span class="mi">52</span> <span class="mi">23</span> <span class="s">MIN</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 23 #/
+</span>
+<span class="n">/</span><span class="c1"># 'PSTACK' command prints the entire stack, 'CLEAR' clears the entire stack #/
+</span>
+<span class="mi">3</span> <span class="mi">6</span> <span class="mi">8</span> <span class="s">PSTACK</span> <span class="s">CLEAR</span> <span class="n">/</span><span class="c1"># [3, 6, 8] #/
+</span>
+<span class="n">/</span><span class="c1"># Monti comes with some tools for stack manipulation #/
+</span>
+<span class="mi">2</span> <span class="s">DUP</span> <span class="s">PSTACK</span> <span class="s">CLEAR</span> <span class="n">/</span><span class="c1"># [2, 2] - Duplicate the top item on the stack#/
+</span><span class="mi">2</span> <span class="mi">6</span> <span class="s">SWAP</span> <span class="s">PSTACK</span> <span class="s">CLEAR</span> <span class="n">/</span><span class="c1"># [6, 2] - Swap top 2 items on stack #/
+</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="s">ROT</span> <span class="s">PSTACK</span> <span class="s">CLEAR</span> <span class="n">/</span><span class="c1"># [2, 3, 1] - Rotate top 3 items on stack #/
+</span><span class="mi">2</span> <span class="mi">3</span> <span class="s">NIP</span> <span class="s">PSTACK</span> <span class="s">CLEAR</span> <span class="n">/</span><span class="c1"># [3] - delete second item from the top of the stack #/
+</span><span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="s">TRIM</span> <span class="s">PSTACK</span> <span class="s">CLEAR</span> <span class="n">/</span><span class="c1"># [5, 6] - Deletes first item on stack #/
+</span><span class="n">/</span><span class="c1"># variables are assigned with the syntax 'VAR [name]'#/
+</span><span class="n">/</span><span class="c1"># When assigned, the variable will take the value of the top item of the stack #/
+</span>
+<span class="mi">6</span> <span class="s">VAR</span> <span class="s">six</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># assigns var 'six' to be equal to 6 #/
+</span><span class="mi">3</span> <span class="mi">6</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">a</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># assigns var 'a' to be equal to 9 #/
+</span>
+<span class="n">/</span><span class="c1"># the length of the stack can be calculated with the statement 'STKLEN' #/
+</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="s">STKLEN</span> <span class="s">PRINT</span> <span class="s">CLEAR</span> <span class="n">/</span><span class="c1"># 4 #/
+</span>
+<span class="n">/</span><span class="c1"># strings are defined with | | #/
+</span>
+<span class="s">|Hello</span> <span class="s">World!|</span> <span class="s">VAR</span> <span class="s">world</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># sets variable 'world' equal to string 'Hello world! #/ 
+</span>
+<span class="n">/</span><span class="c1"># variables can be called by typing its name. when called, the value of the variable is pushed
+</span><span class="s">to</span> <span class="s">the</span> <span class="s">top</span> <span class="s">of</span> <span class="s">the</span> <span class="s">stack</span> <span class="c1">#/
+</span><span class="s">world</span> <span class="s">PRINT</span> <span class="s">.</span>
+
+<span class="n">/</span><span class="c1"># with the OUT statement, the top item on the stack can be printed without a newline #/
+</span>
+<span class="s">|world!|</span> <span class="s">|Hello,</span> <span class="s">|</span> <span class="s">OUT</span> <span class="s">SWAP</span> <span class="s">PRINT</span> <span class="s">CLEAR</span>
+
+<span class="n">/</span><span class="c1"># Data types can be converted between strings and integers with the commands 'TOINT' and 'TOSTR'#/
+</span><span class="s">|5|</span> <span class="s">TOINT</span> <span class="s">PSTACK</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># [5] #/
+</span><span class="mi">45</span> <span class="s">TOSTR</span> <span class="s">PSTACK</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># ['45'] #/
+</span>
+<span class="n">/</span><span class="c1"># User input is taken with INPUT and pushed to the stack. If the top item of the stack is a string, 
+</span><span class="s">the</span> <span class="s">string</span> <span class="s">is</span> <span class="s">used</span> <span class="s">as</span> <span class="s">an</span> <span class="s">input</span> <span class="s">prompt</span> <span class="c1">#/
+</span>
+<span class="s">|What</span> <span class="s">is</span> <span class="s">your</span> <span class="s">name?</span> <span class="s">|</span> <span class="s">INPUT</span> <span class="s">NIP</span> 
+<span class="s">|Hello,</span> <span class="s">|</span> <span class="s">OUT</span> <span class="s">SWAP</span> <span class="s">PRINT</span> <span class="s">CLEAR</span>
+
+
+<span class="n">/</span><span class="c1"># FOR loops have the syntax 'FOR [condition] [commands] ENDFOR' At the moment, [condition] can
+</span><span class="s">only</span> <span class="s">have</span> <span class="s">the</span> <span class="s">value</span> <span class="s">of</span> <span class="s">an</span> <span class="s">integer.</span> <span class="s">Either</span> <span class="s">by</span> <span class="s">using</span> <span class="s">an</span> <span class="s">integer,</span> <span class="s">or</span> <span class="s">a</span> <span class="s">variable</span> <span class="s">call</span> <span class="s">to</span> <span class="s">an</span> <span class="s">integer.</span>
+<span class="s">[commands]</span> <span class="s">will</span> <span class="s">be</span> <span class="s">interpereted</span> <span class="s">the</span> <span class="s">amount</span> <span class="s">of</span> <span class="s">time</span> <span class="s">specified</span> <span class="s">in</span> <span class="s">[condition]</span> <span class="c1">#/
+</span><span class="n">/</span><span class="c1"># E.G: this prints out 1 to 10 #/
+</span>
+<span class="mi">1</span> <span class="s">VAR</span> <span class="s">a</span> <span class="s">.</span>
+<span class="s">FOR</span> <span class="mi">10</span>
+    <span class="s">a</span> <span class="s">PRINT</span> <span class="mi">1</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">a</span>
+<span class="s">ENDFOR</span>
+
+<span class="n">/</span><span class="c1"># the syntax for while loops are similar. A number is evaluated as true if it is larger than
+</span><span class="mi">0</span><span class="s">.</span> <span class="s">a</span> <span class="s">string</span> <span class="s">is</span> <span class="s">true</span> <span class="s">if</span> <span class="s">its</span> <span class="s">length</span> <span class="s">&gt;</span> <span class="mi">0</span><span class="s">.</span> <span class="s">Infinite</span> <span class="s">loops</span> <span class="s">can</span> <span class="s">be</span> <span class="s">used</span> <span class="s">by</span> <span class="s">using</span> <span class="s">literals.</span>
+<span class="c1">#/
+</span><span class="mi">10</span> <span class="s">var</span> <span class="s">loop</span> <span class="s">.</span>
+<span class="s">WHILE</span> <span class="s">loop</span>
+    <span class="s">loop</span> <span class="s">print</span> 
+    <span class="mi">1</span> <span class="s">-</span> <span class="s">var</span> <span class="s">loop</span>
+<span class="s">ENDWHILE</span>
+<span class="n">/</span><span class="c1">#
+</span><span class="s">this</span> <span class="s">loop</span> <span class="s">would</span> <span class="s">count</span> <span class="s">down</span> <span class="s">from</span> <span class="mi">10</span><span class="s">.</span>
+
+<span class="s">IF</span> <span class="s">statements</span> <span class="s">are</span> <span class="s">pretty</span> <span class="s">much</span> <span class="s">the</span> <span class="s">same,</span> <span class="s">but</span> <span class="s">only</span> <span class="s">are</span> <span class="s">executed</span> <span class="s">once.</span>
+<span class="c1">#/
+</span><span class="s">IF</span> <span class="s">loop</span>
+ <span class="s">loop</span> <span class="s">PRINT</span> <span class="s">.</span>
+<span class="s">ENDIF</span>
+
+<span class="n">/</span><span class="c1"># This would only print 'loop' if it is larger than 0 #/
+</span>
+<span class="n">/</span><span class="c1"># If you would want to use the top item on the stack as loop parameters, this can be done with the ':' character #/
+</span>
+<span class="n">/</span><span class="c1"># eg, if you wanted to print 'hello' 7 times, instead of using #/
+</span>
+<span class="s">FOR</span> <span class="mi">7</span>
+    <span class="s">|hello|</span> <span class="s">PRINT</span> <span class="s">.</span>
+<span class="s">ENDFOR</span>
+
+<span class="n">/</span><span class="c1"># this could be used #/
+</span><span class="mi">7</span>
+<span class="s">FOR</span> <span class="p">:</span> 
+    <span class="s">|hello|</span> <span class="s">PRINT</span> <span class="s">.</span>
+<span class="s">ENDFOR</span>
+
+<span class="n">/</span><span class="c1"># Equality and inequality statements use the top 2 items on the stack as parameters, and replace the top two items with the output #/
+</span><span class="n">/</span><span class="c1"># If it is true, the top 2 items are replaced with '1'. If false, with '0'. #/
+</span>
+<span class="mi">7</span> <span class="mi">3</span> <span class="s">&gt;</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 1 #/
+</span><span class="mi">2</span> <span class="mi">10</span> <span class="s">&gt;</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 0 #/
+</span><span class="mi">5</span> <span class="mi">9</span> <span class="s">&lt;=</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 1 #/
+</span><span class="mi">5</span> <span class="mi">5</span> <span class="p">==</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 1 #/
+</span><span class="mi">5</span> <span class="mi">7</span> <span class="p">==</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 0 #/
+</span><span class="mi">3</span> <span class="mi">8</span> <span class="s">!=</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 1 #/
+</span>
+<span class="n">/</span><span class="c1"># User defined commands have the syntax of 'DEF [name] [commands] ENDDEF'. #/
+</span><span class="n">/</span><span class="c1"># eg, if you wanted to define a function with the name of 'printseven' to print '7' 10 times, this could be used #/
+</span>
+<span class="s">DEF</span> <span class="s">printseven</span>
+    <span class="s">FOR</span> <span class="mi">10</span>
+       <span class="mi">7</span> <span class="s">PRINT</span> <span class="s">.</span>
+    <span class="s">ENDFOR</span>
+<span class="s">ENDDEF</span>
+
+<span class="n">/</span><span class="c1"># to run the defined statement, simply type it and it will be run by the interpereter #/
+</span>
+<span class="s">printseven</span>
+
+<span class="n">/</span><span class="c1"># Montilang supports AND, OR and NOT statements #/
+</span>
+<span class="mi">1</span> <span class="mi">0</span> <span class="s">AND</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 0 #/
+</span><span class="mi">1</span> <span class="mi">1</span> <span class="s">AND</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 1 #/
+</span><span class="mi">1</span> <span class="mi">0</span> <span class="s">OR</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 1 #/
+</span><span class="mi">0</span> <span class="mi">0</span> <span class="s">OR</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 0 #/
+</span><span class="mi">1</span> <span class="s">NOT</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 0 #/
+</span><span class="mi">0</span> <span class="s">NOT</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 1 #/
+</span>
+<span class="n">/</span><span class="c1"># Preprocessor statements are made inbetween '&amp;' characters #/
+</span><span class="n">/</span><span class="c1"># currently, preprocessor statements can be used to make c++-style constants #/
+</span>
+<span class="s">&amp;DEFINE</span> <span class="s">LOOPSTR</span> <span class="mi">20</span><span class="s">&amp;</span>
+<span class="n">/</span><span class="c1"># must have &amp; on either side with no spaces, 'DEFINE' is case sensative. #/
+</span><span class="n">/</span><span class="c1"># All statements are scanned and replaced before the program is run, regardless of where the statements are placed #/
+</span>
+<span class="s">FOR</span> <span class="s">LOOPSTR</span> <span class="mi">7</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="s">ENDFOR</span> <span class="n">/</span><span class="c1"># Prints '7' 20 times. At run, 'LOOPSTR' in source code is replaced with '20' #/ 
+</span>
+<span class="n">/</span><span class="c1"># Multiple files can be used with the &amp;INCLUDE &lt;filename&gt;&amp; Command that operates similar to c++, where the file specified is tokenized,
+</span>   <span class="s">and</span> <span class="s">the</span> <span class="s">&amp;INCLUDE</span> <span class="s">statement</span> <span class="s">is</span> <span class="s">replaced</span> <span class="s">with</span> <span class="s">the</span> <span class="s">file</span> <span class="c1">#/
+</span>   
+<span class="n">/</span><span class="c1"># E.G, you can have a program be run through several files. If you had the file 'name.mt' with the following data:
+</span>
+<span class="s">[name.mt]</span>
+<span class="s">|Hello,</span> <span class="s">|</span> <span class="s">OUT</span> <span class="s">.</span> <span class="s">name</span> <span class="s">PRINT</span> <span class="s">.</span>
+
+<span class="s">a</span> <span class="s">program</span> <span class="s">that</span> <span class="s">asks</span> <span class="s">for</span> <span class="s">your</span> <span class="s">name</span> <span class="s">and</span> <span class="s">then</span> <span class="s">prints</span> <span class="s">it</span> <span class="s">out</span> <span class="s">can</span> <span class="s">be</span> <span class="s">defined</span> <span class="s">as</span> <span class="s">such:</span> <span class="c1">#/
+</span>
+<span class="s">|What</span> <span class="s">is</span> <span class="s">your</span> <span class="s">name?</span> <span class="s">|</span> <span class="s">INPUT</span> <span class="s">VAR</span> <span class="s">name</span> <span class="s">.</span> <span class="s">&amp;INCLUDE</span> <span class="s">name.mt&amp;</span>
+
+<span class="n">/</span><span class="c1"># ARRAYS: #/
+</span>
+<span class="n">/</span><span class="c1"># arrays are defined with the statement 'ARR'
+</span><span class="s">When</span> <span class="s">called,</span> <span class="s">everything</span> <span class="s">currently</span> <span class="s">in</span> <span class="s">the</span> <span class="s">stack</span> <span class="s">is</span> <span class="s">put</span> <span class="s">into</span> <span class="s">one</span>
+<span class="s">array</span> <span class="s">and</span> <span class="s">all</span> <span class="s">items</span> <span class="no">on</span> <span class="s">the</span> <span class="s">stack</span> <span class="s">are</span> <span class="s">replaced</span> <span class="s">with</span> <span class="s">the</span> <span class="s">new</span> <span class="s">array.</span> <span class="c1">#/
+</span>
+<span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="s">ARR</span> <span class="s">PSTACK</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># [[2, 3, 4]] #/
+</span>
+<span class="n">/</span><span class="c1"># the statement 'LEN' adds the length of the last item on the stack to the stack.
+</span><span class="s">This</span> <span class="s">can</span> <span class="s">be</span> <span class="s">used</span> <span class="no">on</span> <span class="s">arrays,</span> <span class="s">as</span> <span class="s">well</span> <span class="s">as</span> <span class="s">strings.</span> <span class="c1">#/
+</span>
+<span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="s">ARR</span> <span class="s">LEN</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># 3 #/
+</span>
+<span class="n">/</span><span class="c1"># values can be appended to an array with the statement 'APPEND' #/
+</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="s">ARR</span> <span class="mi">5</span> <span class="s">APPEND</span> <span class="s">.</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># [1, 2, 3, 5] #/
+</span>
+<span class="n">/</span><span class="c1"># an array at the top of the stack can be wiped with the statement 'WIPE' #/
+</span><span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="s">ARR</span> <span class="s">WIPE</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># [] #/
+</span>
+<span class="n">/</span><span class="c1"># The last item of an array can be removed with the statement 'DROP' #/
+</span>
+<span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="s">ARR</span> <span class="s">DROP</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># [3, 4]
+</span><span class="n">/</span><span class="c1"># arrays, like other datatypes can be stored in variables #/
+</span><span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="s">ARR</span> <span class="s">VAR</span> <span class="s">list</span> <span class="s">.</span>
+<span class="s">list</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># [5, 6, 7] #/
+</span>
+<span class="n">/</span><span class="c1"># Values at specific indexes can be changed with the statement 'INSERT &lt;index&gt;' #/
+</span><span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="s">ARR</span> 
+<span class="mi">97</span> <span class="s">INSERT</span> <span class="mi">1</span> <span class="s">.</span> <span class="s">PRINT</span> <span class="n">/</span><span class="c1"># 4, 97, 6 #/
+</span>
+<span class="n">/</span><span class="c1"># Values at specific indexes can be deleted with the statement 'DEL &lt;index&gt;' #/
+</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="s">ARR</span>
+<span class="s">DEL</span> <span class="mi">1</span> <span class="s">PRINT</span> <span class="s">.</span> <span class="n">/</span><span class="c1"># [1, 3] #/
+</span>
+<span class="n">/</span><span class="c1"># items at certain indexes of an array can be gotten with the statement 'GET &lt;index&gt;' #/
+</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="s">ARR</span> <span class="s">GET</span> <span class="mi">2</span> <span class="s">PSTACK</span> <span class="n">/</span><span class="c1"># [[1, 2, 3], 3] #/
+</span></code></pre></div></div>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright"><b>Contact: </b><br/> Email: <a href="mailto:lduck11007@gmail.com">lduck11007@gmail.com</a> <br/>
+          Github: <a href="https://github.com/lduck11007/">github.com/lduck11007/</a>
+          </p>        
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

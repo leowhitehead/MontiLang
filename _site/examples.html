@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <title>MontiLang | Stack-Oriented Imperative programming language</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="icon" href="assets/images/icon.png">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=">
+    <style>      
+      #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: red;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 4px;
+      }
+      
+      #myBtn:hover {
+        background-color: #555;
+      }
+      .titleheader img{
+        float: left;
+        width: 50px;
+        height: 50px;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        box-shadow: none !important;
+      }
+
+      .titleheader h1 {
+        position: relative;
+        top: 18px;
+        left: 10px;
+      }
+      </style>
+<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Slate theme | Slate is a theme for GitHub Pages.</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Slate theme" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Slate is a theme for GitHub Pages." />
+<meta property="og:description" content="Slate is a theme for GitHub Pages." />
+<link rel="canonical" href="http://localhost:4000/examples.html" />
+<meta property="og:url" content="http://localhost:4000/examples.html" />
+<meta property="og:site_name" content="Slate theme" />
+<script type="application/ld+json">
+{"headline":"Slate theme","url":"http://localhost:4000/examples.html","description":"Slate is a theme for GitHub Pages.","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              document.getElementById("myBtn").style.display = "block";
+          } else {
+              document.getElementById("myBtn").style.display = "none";
+          }
+      }
+      
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+      }
+      </script>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/lduck11007/MontiLang">View on GitHub</a>
+
+          <div class="titleheader">
+            <img src="assets/images/icon.png" />
+            <h1 id="project_title">MontiLang</h1>
+        </div>          <h2 id="project_tagline"><a href="./index.html">About</a> | <a href="./examples.html">Examples</a> | <a href="./documentation.html">Documentation</a> | <a href="./downloads.html">Downloads</a></h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3 id="jump-to">Jump To:</h3>
+<ol>
+  <li><a href="#helloworldmt">HelloWorld.mt</a></li>
+  <li><a href="#countmt">Count.mt</a></li>
+  <li><a href="#countdownmt">CountDown.mt</a></li>
+  <li><a href="#namemt">Name.mt</a></li>
+  <li><a href="#fibonaccimt">Fibonacci.mt</a></li>
+  <li><a href="#fizzbuzzmt">FizzBuzz.mt</a></li>
+  <li><a href="#rule110mt">Rule110.mt</a></li>
+</ol>
+
+<h3 id="helloworldmt">HelloWorld.mt</h3>
+<p>A simple program that prints the phrase ‘Hello World’ to the console</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">/</span><span class="c1"># Prints 'Hello World' #/
+</span>
+<span class="s">|Hello</span> <span class="s">World|</span> <span class="s">PRINT</span> <span class="s">.</span>
+</code></pre></div></div>
+
+<h3 id="countmt">Count.mt</h3>
+<p>A program that takes a number as input, then counts to that number sequentially starting at 1</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">/</span><span class="c1"># takes a number as input, counts to number #/
+</span>
+<span class="s">|Enter</span> <span class="s">a</span> <span class="s">number</span> <span class="s">to</span> <span class="s">count</span> <span class="s">to:</span> <span class="s">|</span> <span class="s">INPUT</span> <span class="s">NIP</span> <span class="s">VAR</span> <span class="s">count</span> <span class="s">.</span>
+<span class="mi">1</span> <span class="s">VAR</span> <span class="s">num</span> <span class="s">.</span> 
+<span class="s">FOR</span> <span class="s">count</span>
+    <span class="s">num</span> <span class="s">print</span>
+    <span class="mi">1</span> <span class="s">+</span> <span class="s">var</span> <span class="s">num</span> <span class="s">.</span>
+<span class="s">ENDFOR</span>
+</code></pre></div></div>
+
+<h3 id="countdownmt">CountDown.mt</h3>
+<p>A program that takes a number as an input, then counts from that number to zero.</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">/</span><span class="c1"># counts to 0 from given number with a while statement #/
+</span>
+<span class="s">|Enter</span> <span class="s">a</span> <span class="s">number</span> <span class="s">to</span> <span class="s">count</span> <span class="s">from:</span> <span class="s">|</span> <span class="s">INPUT</span> <span class="s">NIP</span>
+<span class="s">VAR</span> <span class="s">num</span> <span class="s">.</span>
+
+<span class="s">WHILE</span> <span class="s">num</span>
+    <span class="s">num</span> <span class="s">PRINT</span> 
+    <span class="mi">1</span> <span class="s">-</span> <span class="s">VAR</span> <span class="s">num</span> <span class="s">.</span>
+
+<span class="s">ENDWHILE</span>
+</code></pre></div></div>
+
+<h3 id="namemt">Name.mt</h3>
+<p>A program that takes an input as a name, and then responds with that name</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">/</span><span class="c1"># asks for a user's name and responds with it back #/
+</span>
+<span class="s">|What</span> <span class="s">is</span> <span class="s">your</span> <span class="s">name?</span> <span class="s">|</span> <span class="s">INPUT</span> <span class="s">NIP</span>
+<span class="s">|Hello,</span> <span class="s">|</span> <span class="s">OUT</span> 
+<span class="s">SWAP</span> <span class="s">PRINT</span> <span class="s">.</span>
+</code></pre></div></div>
+
+<h3 id="fibonaccimt">Fibonacci.mt</h3>
+<p>A program that prints the first 40 numbers in the Fibonacci sequence</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">/</span><span class="c1"># programming example displaying the first 20 numbers of the #/
+</span><span class="n">/</span><span class="c1"># fibonacci sequence with a for loop #/
+</span>
+<span class="mi">0</span> <span class="s">VAR</span> <span class="s">a</span> <span class="s">.</span>
+<span class="mi">1</span> <span class="s">VAR</span> <span class="s">b</span> <span class="s">.</span>
+
+<span class="s">FOR</span> <span class="mi">20</span>
+    <span class="s">a</span> <span class="s">b</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">c</span> <span class="s">.</span>
+    <span class="s">a</span> <span class="s">PRINT</span> <span class="s">.</span>
+    <span class="s">b</span> <span class="s">VAR</span> <span class="s">a</span> <span class="s">.</span>
+    <span class="s">c</span> <span class="s">VAR</span> <span class="s">b</span> <span class="s">.</span>
+<span class="s">ENDFOR</span>
+</code></pre></div></div>
+
+<h3 id="fizzbuzzmt">FizzBuzz.mt</h3>
+<p>A program that loops through the numbers 1-100, prints ‘Fizz’ if the number is divisible by 3, ‘Buzz’ if it is divisible by 5, and ‘FizzBuzz’ if it is divisible by both 3 and 5.</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">&amp;DEFINE</span> <span class="s">LOOP</span> <span class="mi">100</span><span class="s">&amp;</span>
+<span class="mi">1</span> <span class="s">VAR</span> <span class="s">i</span> <span class="s">.</span>
+
+<span class="s">FOR</span> <span class="s">LOOP</span>
+    <span class="s">||</span> <span class="s">VAR</span> <span class="s">ln</span> <span class="s">.</span>
+    <span class="s">i</span> <span class="mi">5</span> <span class="s">%</span> <span class="mi">0</span> <span class="p">==</span> 
+    <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+        <span class="s">ln</span> <span class="s">|Buzz|</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">ln</span> <span class="s">.</span>
+    <span class="s">ENDIF</span>
+    <span class="s">i</span> <span class="mi">3</span> <span class="s">%</span> <span class="mi">0</span> <span class="p">==</span>
+    <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+        <span class="s">ln</span> <span class="s">|Fizz|</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">ln</span> <span class="s">.</span>
+    <span class="s">ENDIF</span>
+    <span class="s">ln</span> <span class="s">||</span> <span class="p">==</span>
+    <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+        <span class="s">i</span> <span class="s">PRINT</span> <span class="s">.</span>
+    <span class="s">ENDIF</span>
+    <span class="s">ln</span> <span class="s">||</span> <span class="s">!=</span>
+    <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+        <span class="s">ln</span> <span class="s">PRINT</span> <span class="s">.</span>
+    <span class="s">ENDIF</span>
+<span class="s">i</span> <span class="mi">1</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">i</span> <span class="s">.</span>
+<span class="s">ENDFOR</span>
+</code></pre></div></div>
+
+<h3 id="rule110mt">Rule110.mt</h3>
+<p><a href="https://en.wikipedia.org/wiki/Rule_110">Rule 110</a> is an elementary cellular automation. It is similar to Conway’s game of life, with the difference being that it is one dimentional, while still being turing complete. It follows the rules as shown:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Current Pattern</th>
+      <th>111</th>
+      <th>110</th>
+      <th>101</th>
+      <th>100</th>
+      <th>011</th>
+      <th>010</th>
+      <th>001</th>
+      <th>000</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>New State for center cell</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This program shows an array of 100 cells being updated through 100 iterations of this simulation.</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">100</span> <span class="s">VAR</span> <span class="s">length</span> <span class="s">.</span>
+<span class="mi">100</span> <span class="s">VAR</span> <span class="s">height</span> <span class="s">.</span>
+
+<span class="s">FOR</span> <span class="s">length</span> <span class="mi">0</span> <span class="s">ENDFOR</span> <span class="mi">1</span> <span class="mi">0</span> <span class="s">ARR</span> <span class="s">VAR</span> <span class="s">list</span> <span class="s">.</span> 
+<span class="s">length</span> <span class="mi">1</span> <span class="s">-</span> <span class="s">VAR</span> <span class="s">topLen</span> <span class="s">.</span> 
+<span class="s">FOR</span> <span class="s">topLen</span> <span class="mi">0</span> <span class="s">ENDFOR</span> <span class="mi">1</span> <span class="s">ARR</span> <span class="s">VAR</span> <span class="s">topLst</span> <span class="s">.</span>  
+
+<span class="s">DEF</span> <span class="s">getNeighbors</span>
+    <span class="mi">1</span> <span class="s">-</span> <span class="s">VAR</span> <span class="s">tempIndex</span> <span class="s">.</span> 
+    <span class="s">GET</span> <span class="s">tempIndex</span> <span class="s">SWAP</span> 
+    <span class="s">tempIndex</span> <span class="mi">1</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">tempIndex</span> <span class="s">.</span>
+    <span class="s">GET</span> <span class="s">tempIndex</span> <span class="s">SWAP</span> 
+    <span class="s">tempIndex</span> <span class="mi">1</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">tempIndex</span> <span class="s">.</span>
+    <span class="s">GET</span> <span class="s">tempIndex</span> <span class="s">SWAP</span> <span class="s">.</span>
+    <span class="s">FOR</span> <span class="mi">3</span> <span class="s">TOSTR</span> <span class="s">ROT</span> <span class="s">ENDFOR</span>
+    <span class="s">FOR</span> <span class="mi">2</span> <span class="s">SWAP</span> <span class="s">+</span> <span class="s">ENDFOR</span>  
+<span class="s">ENDDEF</span>
+
+<span class="s">DEF</span> <span class="s">printArr</span>
+    <span class="s">LEN</span> <span class="mi">1</span> <span class="s">-</span> <span class="s">VAR</span> <span class="s">stLen</span> <span class="s">.</span>
+    <span class="mi">0</span> <span class="s">VAR</span> <span class="s">j</span> <span class="s">.</span>
+    <span class="s">FOR</span> <span class="s">stLen</span>
+        <span class="s">GET</span> <span class="s">j</span> 
+        <span class="s">TOSTR</span> <span class="s">OUT</span> <span class="s">.</span>
+        <span class="s">j</span> <span class="mi">1</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">j</span> <span class="s">.</span>
+    <span class="s">ENDFOR</span>
+    <span class="s">||</span> <span class="s">PRINT</span> <span class="s">.</span>
+<span class="s">ENDDEF</span>
+
+<span class="s">FOR</span> <span class="s">height</span>
+    <span class="s">FOR</span> <span class="s">length</span> <span class="mi">0</span> <span class="s">ENDFOR</span> <span class="s">ARR</span> <span class="s">VAR</span> <span class="s">next</span> <span class="s">.</span>
+    <span class="mi">1</span> <span class="s">VAR</span> <span class="s">i</span> <span class="s">.</span>
+    <span class="s">FOR</span> <span class="s">length</span>
+        <span class="s">list</span> <span class="s">i</span> <span class="s">getNeighbors</span> <span class="s">VAR</span> <span class="s">last</span> <span class="s">.</span> 
+        <span class="s">i</span> <span class="mi">1</span> <span class="s">-</span> <span class="s">VAR</span> <span class="s">ind</span> <span class="s">.</span>
+        <span class="s">last</span> <span class="s">|111|</span> <span class="p">==</span> 
+        <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+            <span class="s">next</span> <span class="mi">0</span> <span class="s">INSERT</span> <span class="s">ind</span>
+        <span class="s">ENDIF</span>
+
+        <span class="s">last</span> <span class="s">|110|</span> <span class="p">==</span>
+        <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+            <span class="s">next</span> <span class="mi">1</span> <span class="s">INSERT</span> <span class="s">ind</span>
+        <span class="s">ENDIF</span>
+
+        <span class="s">last</span> <span class="s">|101|</span> <span class="p">==</span>
+        <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+            <span class="s">next</span> <span class="mi">1</span> <span class="s">INSERT</span> <span class="s">ind</span>
+        <span class="s">ENDIF</span>
+
+        <span class="s">last</span> <span class="s">|100|</span> <span class="p">==</span>
+        <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+            <span class="s">next</span> <span class="mi">0</span> <span class="s">INSERT</span> <span class="s">ind</span>
+        <span class="s">ENDIF</span>
+
+        <span class="s">last</span> <span class="s">|011|</span> <span class="p">==</span>
+        <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+            <span class="s">next</span> <span class="mi">1</span> <span class="s">INSERT</span> <span class="s">ind</span>
+        <span class="s">ENDIF</span>
+
+        <span class="s">last</span> <span class="s">|010|</span> <span class="p">==</span>
+        <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+            <span class="s">next</span> <span class="mi">1</span> <span class="s">INSERT</span> <span class="s">ind</span>
+        <span class="s">ENDIF</span>
+
+        <span class="s">last</span> <span class="s">|001|</span> <span class="p">==</span>
+        <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+            <span class="s">next</span> <span class="mi">1</span> <span class="s">INSERT</span> <span class="s">ind</span>
+        <span class="s">ENDIF</span>
+
+        <span class="s">last</span> <span class="s">|000|</span> <span class="p">==</span>
+        <span class="s">IF</span> <span class="p">:</span> <span class="s">.</span>
+            <span class="s">next</span> <span class="mi">0</span> <span class="s">INSERT</span> <span class="s">ind</span>
+        <span class="s">ENDIF</span>
+        <span class="s">clear</span>
+        <span class="s">i</span> <span class="mi">1</span> <span class="s">+</span> <span class="s">VAR</span> <span class="s">i</span> <span class="s">.</span>
+    <span class="s">ENDFOR</span> 
+    <span class="s">next</span> <span class="s">printArr</span> <span class="s">.</span>
+    <span class="s">next</span> <span class="mi">0</span> <span class="s">ADD</span> <span class="s">APPEND</span> <span class="s">.</span> <span class="s">VAR</span> <span class="s">list</span> <span class="s">.</span>
+<span class="s">ENDFOR</span>
+</code></pre></div></div>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright"><b>Contact: </b><br/> Email: <a href="mailto:lduck11007@gmail.com">lduck11007@gmail.com</a> <br/>
+          Github: <a href="https://github.com/lduck11007/">github.com/lduck11007/</a>
+          </p>        
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

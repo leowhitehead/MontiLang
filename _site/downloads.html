@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <title>MontiLang | Stack-Oriented Imperative programming language</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="icon" href="assets/images/icon.png">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=">
+    <style>      
+      #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: red;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 4px;
+      }
+      
+      #myBtn:hover {
+        background-color: #555;
+      }
+      .titleheader img{
+        float: left;
+        width: 50px;
+        height: 50px;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        box-shadow: none !important;
+      }
+
+      .titleheader h1 {
+        position: relative;
+        top: 18px;
+        left: 10px;
+      }
+      </style>
+<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Slate theme | Slate is a theme for GitHub Pages.</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Slate theme" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Slate is a theme for GitHub Pages." />
+<meta property="og:description" content="Slate is a theme for GitHub Pages." />
+<link rel="canonical" href="http://localhost:4000/downloads.html" />
+<meta property="og:url" content="http://localhost:4000/downloads.html" />
+<meta property="og:site_name" content="Slate theme" />
+<script type="application/ld+json">
+{"headline":"Slate theme","url":"http://localhost:4000/downloads.html","description":"Slate is a theme for GitHub Pages.","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              document.getElementById("myBtn").style.display = "block";
+          } else {
+              document.getElementById("myBtn").style.display = "none";
+          }
+      }
+      
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+      }
+      </script>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/lduck11007/MontiLang">View on GitHub</a>
+
+          <div class="titleheader">
+            <img src="assets/images/icon.png" />
+            <h1 id="project_title">MontiLang</h1>
+        </div>          <h2 id="project_tagline"><a href="./index.html">About</a> | <a href="./examples.html">Examples</a> | <a href="./documentation.html">Documentation</a> | <a href="./downloads.html">Downloads</a></h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="download-montilang">Download Montilang</h1>
+
+<p>To install and use MontiLang, you can either download from binaries, or build from source with the instructions listed below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Release Version</th>
+      <th>Download</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Monti 2.0 for Windows</td>
+      <td><a href="https://github.com/lduck11007/MontiLang/releases/download/2.0/MontiLang2-0Win.tar.gz">MontiLang2-0Win.tar.gz</a></td>
+    </tr>
+    <tr>
+      <td>Monti 2.0 for Linux</td>
+      <td><a href="https://github.com/lduck11007/MontiLang/releases/download/2.0/MontiLang2-0Linux.tar.gz">MontiLang2-0Linux.tar.gz</a></td>
+    </tr>
+    <tr>
+      <td>Monti 2.0 Source code</td>
+      <td><a href="https://github.com/lduck11007/MontiLang/archive/2.0.tar.gz">Source code</a></td>
+    </tr>
+    <tr>
+      <td>Monti 1.0 for Windows</td>
+      <td><a href="https://github.com/lduck11007/MontiLang/releases/download/1.0/MontiLang1-0Win.tar.gz">MontiLang1-0Win.tar.gz</a></td>
+    </tr>
+    <tr>
+      <td>Monti 1.0 for Linux</td>
+      <td><a href="https://github.com/lduck11007/MontiLang/releases/download/1.0/MontiLang1-0Linux.tar.gz">MontiLang1-0Linux.tar.gz</a></td>
+    </tr>
+    <tr>
+      <td>Monti 1.0 Source code</td>
+      <td><a href="https://github.com/lduck11007/MontiLang/archive/1.0.tar.gz">Source code</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="installation">Installation</h2>
+
+<p>The easiest way to install and use MontiLang is to download the appropriate files for your system from above. After this is done, add the binaries to the system path. On windows, this is done by modifying the environment variables for your system. On Linux-based machines, this could be done by modifying <code class="highlighter-rouge">/etc/profile</code>, <code class="highlighter-rouge">/etc/environment</code> or any other page. Follow the appropriate instructions for your distro.</p>
+
+<h2 id="building-from-source-code">Building from source code</h2>
+
+<p>For more control over MontiLang and support over a wider range of systems, MontiLang can easily be built from source code with the tool <a href="https://pypi.python.org/pypi/PyInstaller/3.3">PyInstaller</a> from the Python Package Index. Ensure that you have Python and Pip installed.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m pip install pyinstaller
+git clone https://github.com/lduck11007/MontiLang.git
+cd MontiLang/src
+pyinstaller main.py -n monti
+</code></pre></div></div>
+
+<p>The appropriate binaries will be located in <code class="highlighter-rouge">/MontiLang/src/dist/monti/</code>.</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright"><b>Contact: </b><br/> Email: <a href="mailto:lduck11007@gmail.com">lduck11007@gmail.com</a> <br/>
+          Github: <a href="https://github.com/lduck11007/">github.com/lduck11007/</a>
+          </p>        
+      </footer>
+    </div>
+
+    
+  </body>
+</html>
