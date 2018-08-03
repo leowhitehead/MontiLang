@@ -48,8 +48,7 @@ use `pip`, or the built-in package manager for your distro to install pyinstalle
     git clone https://github.com/lduck11007/MontiLang.git
     cd /MontiLang/src
     pyinstaller icon=../icon.ico main.py -n monti
-add `/src/dist/monti` to system path by editing `/etc/profile`, `/etc/environment` or however your distro handles `PATH`
-
+    PATH=/path/to/location:$PATH
 
 
 # Usage:
